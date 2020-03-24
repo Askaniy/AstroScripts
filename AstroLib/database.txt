@@ -1,0 +1,2224 @@
+
+Solar system, Sol
+
+	Sun
+	radius = 6.957e8 m
+		source = IAU2015 Resolution B3
+	mass parameter = 1.3271244e20 m^3/s^2
+		source = IAU2015 Resolution B3
+	effective temperature = 5772 K
+		source = IAU2015 Resolution B3
+	irradiance = 1361 W/m^2
+		source = IAU2015 Resolution B3
+		comment = irradiance from 1 au
+	luminosity = 3.828e26 W
+		source = IAU2015 Resolution B3
+	north pole ra = 286.13 deg
+		source = WGCCRE2015
+	north pole dec = 63.87 deg
+		source = WGCCRE2015
+	meridian angle = 84.176 deg
+		source = WGCCRE2015
+	
+	Mercury
+	horizons id = 1
+	mean radius = 2439.4 km
+		error = 0.1
+		source = WGCCRE2015
+	long equatorial radius = 2440.53 km
+		error = 0.04
+		source = WGCCRE2015
+	short equatorial radius = 2439.28 km
+		error = 0.04
+		source = WGCCRE2015
+	polar radius = 2438.26 km
+		error = 0.04
+		source = WGCCRE2015
+	rms deviation from spheroid = 1 km
+		source = WGCCRE2015
+	maximum elevation = 4.6 km
+		source = WGCCRE2015
+	maximum depression = 2.5 km
+		source = WGCCRE2015
+	north pole ra = 281.0103 deg
+		source = WGCCRE2015
+	north pole dec = 61.4155 deg
+		source = WGCCRE2015
+	meridian angle = 329.5988 deg
+		source = WGCCRE2015
+	
+	Venus
+	horizons id = 2
+	radius = 6051.8 km
+		error = 1.0
+		source = WGCCRE2015
+		comment = mean, equatorial and polar radii are the same
+	rms deviation from spheroid = 1 km
+		source = WGCCRE2015
+	maximum elevation = 11 km
+		source = WGCCRE2015
+	maximum depression = 2 km
+		source = WGCCRE2015
+	north pole ra = 272.76 deg
+		source = WGCCRE2015
+	north pole dec = 67.16 deg
+		source = WGCCRE2015
+	meridian angle = 160.20 deg
+		source = WGCCRE2015
+	
+	Earth system
+	horizons id = 3
+
+		Earth
+		horizons id = 399
+		mean radius = 6371.0084 km
+			error = 0.0001
+			source = WGCCRE2015
+		equatorial radius = 6378.1366 km
+			error = 0.0001
+			source = WGCCRE2015
+			comment = equatorial radius is exactly 6378.1 km by IAU2015 Resolution B3
+		polar radius = 6356.7519 km
+			error = 0.0001
+			source = WGCCRE2015
+			comment = equatorial radius is exactly 6356.8 km by IAU2015 Resolution B3
+		rms deviation from spheroid = 3.57 km
+			source = WGCCRE2015
+		maximum elevation = 8.85 km
+			source = WGCCRE2015
+		maximum depression = 11.52 km
+			source = WGCCRE2015
+		gravitational parameter = 3.986004e14 m^3/s^2
+			source = IAU2015 Resolution B3
+		
+		Moon, Earth I
+		horizons id = 301
+		radius = 1737.4 km
+			source = WGCCRE2015
+		equatorial diameter = 3476 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 3471 km
+			source = johnstonsarchive.net Satellite data
+		rms deviation from spheroid = 2.5 km
+			source = WGCCRE2015
+		maximum elevation = 7.5 km
+			source = WGCCRE2015
+		maximum depression = 5.6 km
+			source = WGCCRE2015
+		mean density = 3.344 g/cm^3
+			error = 0.005
+			source = JPL Planetary Satellite Physical Parameters
+		gravitational parameter = 4902.801 km^3/s^2
+			error = 0.001
+			source = JPL Planetary Satellite Physical Parameters
+		geometric albedo = 0.12
+			source = JPL Planetary Satellite Physical Parameters
+		rotation period = 27.321662 day
+			source = johnstonsarchive.net Satellite data
+
+	Martian system
+	horizons id = 4
+	
+		Mars
+		mean radius = 3389.50 km
+			error = 0.2
+			source = WGCCRE2015
+		equatorial radius = 3369.19 km
+			error = 0.1
+			source = WGCCRE2015
+		mean polar radius = 3376.20 km
+			error = 0.1
+			source = WGCCRE2015
+		north polar radius = 3373.19 km
+			error = 0.1
+			source = WGCCRE2015
+		south polar radius = 3379.21 km
+			error = 0.1
+			source = WGCCRE2015
+		rms deviation from spheroid = 3.0 km
+			source = WGCCRE2015
+		maximum elevation = 22.64 km
+			error = 0.1
+			source = WGCCRE2015
+		maximum depression = 7.55 km
+			error = 0.1
+			source = WGCCRE2015
+		north pole ra = 317.269202 deg
+			source = WGCCRE2015
+		north pole dec = 54.432516 deg
+			source = WGCCRE2015
+		meridian angle = 176.049863 deg
+			source = WGCCRE2015
+		
+		Phobos, Mars I
+		mean radius = 11.08 km
+			error = 0.04
+			source = WGCCRE2015
+		subplanetary equatorial radius = 13.0 km
+			source = WGCCRE2015
+		along orbit equatorial radius = 11.4 km
+			source = WGCCRE2015
+		polar radius = 9.1 km
+			source = WGCCRE2015
+		rms deviation from ellipsoid = 0.5 km
+			source = WGCCRE2015
+		mean density = 1.872 g/cm^3
+			error = 0.076
+			source = JPL Planetary Satellite Physical Parameters
+		gravitational parameter = 0.0007112 km^3/s^2
+			error = 0.0000010
+			source = JPL Planetary Satellite Physical Parameters
+		rotation period = 0.31891023 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 317.67071657 deg
+			source = WGCCRE2015
+		north pole dec = 52.88627266 deg
+			source = WGCCRE2015
+		meridian angle = 34.9964842535 deg
+			source = WGCCRE2015
+		geometric albedo = 0.071
+			error = 0.012
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Deimos, Mars II
+		mean radius = 6.2 km
+			error = 0.25
+			source = WGCCRE2015
+		subplanetary equatorial radius = 7.8 km
+			source = WGCCRE2015
+		along orbit equatorial radius = 6.0 km
+			source = WGCCRE2015
+		polar radius = 5.1 km
+			source = WGCCRE2015
+		rms deviation from ellipsoid = 0.2 km
+			source = WGCCRE2015
+		mean density = 1.471 g/cm^3
+			error = 0.166
+			source = JPL Planetary Satellite Physical Parameters
+		gravitational parameter = 0.0000985 km^3/s^2
+			error = 0.0000024
+			source = JPL Planetary Satellite Physical Parameters
+		rotation period = 1.262441 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 316.65705808 deg
+			source = WGCCRE2015
+		north pole dec = 53.50992033 deg
+			source = WGCCRE2015
+		meridian angle = 79.39932954 deg
+			source = WGCCRE2015
+		geometric albedo = 0.068
+			error = 0.007
+			source = JPL Planetary Satellite Physical Parameters
+	
+	Jovian system
+	horizons id = 5
+	
+		Jupiter
+		mean radius = 69911 km
+			error = 6
+			source = WGCCRE2015
+			comment = radii correspond to a 1 bar surface
+		equatorial radius = 71492 km
+			error = 4
+			source = WGCCRE2015
+			comment = radius by IAU2015 Resolution B3
+		polar radius = 66854 km
+			error = 10
+			source = WGCCRE2015
+			comment = radius by IAU2015 Resolution B3
+		rms deviation = 62.1 km
+			source = WGCCRE2015
+		maximum elevation = 31 km
+			source = WGCCRE2015
+		maximum depression = 102 km
+			source = WGCCRE2015
+		mass parameter = 1.2668653e17 m^3/s^2
+			source = IAU2015 Resolution B3
+		north pole ra = 268.056595 deg
+			source = WGCCRE2015
+		north pole dec = 64.495303 deg
+			source = WGCCRE2015
+		meridian angle = 284.95 deg
+			source = WGCCRE2015
+		
+		Metis, Jupiter XVI, S/1979 J3
+		mean radius = 21.5 km
+			error = 4
+			source = WGCCRE2015
+		subplanetary equatorial radius = 30 km
+			source = WGCCRE2015
+		along orbit equatorial radius = 20 km
+			source = WGCCRE2015
+		polar radius = 17 km
+			source = WGCCRE2015
+		rotation period = 0.2947802 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 268.05 deg
+			source = WGCCRE2015
+		north pole dec = 64.49 deg
+			source = WGCCRE2015
+		meridian angle = 346.09 deg
+			source = WGCCRE2015
+		geometric albedo = 0.061
+			error = 0.003
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Adrastea, Jupiter XV, S/1979 J1
+		mean radius = 8.2 km
+			error = 4
+			source = WGCCRE2015
+		subplanetary equatorial radius = 10 km
+			source = WGCCRE2015
+		along orbit equatorial radius = 8 km
+			source = WGCCRE2015
+		polar radius = 7 km
+			source = WGCCRE2015
+		rotation period = 0.2982614 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 268.05 deg
+			source = WGCCRE2015
+		north pole dec = 64.49 deg
+			source = WGCCRE2015
+		meridian angle = 33.29 deg
+			source = WGCCRE2015
+		geometric albedo = 0.1
+			error = 0.045
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Amalthea, Jupiter V
+		mean radius = 83.5 km
+			error = 3
+			source = WGCCRE2015
+		subplanetary equatorial radius = 125 km
+			source = WGCCRE2015
+		along orbit equatorial radius = 73 km
+			source = WGCCRE2015
+		polar radius = 64 km
+			source = WGCCRE2015
+		rms deviation from ellipsoid = 3.2 km
+			source = WGCCRE2015
+		rotation period = 0.49817905 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 268.05 deg
+			source = WGCCRE2015
+		north pole dec = 64.49 deg
+			source = WGCCRE2015
+		meridian angle = 231.67 deg
+			source = WGCCRE2015
+		geometric albedo = 0.090
+			error = 0.005
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Thebe, Jupiter XIV, S/1979 J2
+		mean radius = 49.3 km
+			error = 4
+			source = WGCCRE2015
+		subplanetary equatorial radius = 58 km
+			source = WGCCRE2015
+		along orbit equatorial radius = 49 km
+			source = WGCCRE2015
+		rotation period = 0.6745 day
+			source = johnstonsarchive.net Satellite data
+		polar radius = 42 km
+			source = WGCCRE2015
+		north pole ra = 268.05 deg
+			source = WGCCRE2015
+		north pole dec = 64.49 deg
+			source = WGCCRE2015
+		meridian angle = 8.56 deg
+			source = WGCCRE2015
+		geometric albedo = 0.047
+			error = 0.003
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Io, Jupiter I
+		mean radius = 1821.49 km
+			source = WGCCRE2015
+		subplanetary equatorial radius = 1829.4 km
+			source = WGCCRE2015
+		along orbit equatorial radius = 1819.4 km
+			source = WGCCRE2015
+		polar radius = 1815.7 km
+			source = WGCCRE2015
+		maximum elevation = 13 km
+			source = WGCCRE2015
+		maximum depression = 3 km
+			source = WGCCRE2015
+		mean density = 3.528 g/cm^3
+			error = 0.006
+			source = JPL Planetary Satellite Physical Parameters
+		gravitational parameter = 5959.916 km^3/s^2
+			error = 0.012
+			source = JPL Planetary Satellite Physical Parameters
+		rotation period = 1.769138 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 268.05 deg
+			source = WGCCRE2015
+		north pole dec = 64.50 deg
+			source = WGCCRE2015
+		meridian angle = 200.39 deg
+			source = WGCCRE2015
+		geometric albedo = 0.63
+			error = 0.02
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Europa, Jupiter II
+		mean radius = 1560.8 km
+			error = 0.3
+			source = WGCCRE2015
+		subplanetary equatorial radius = 1562.6 km
+			source = WGCCRE2015
+		along orbit equatorial radius = 1560.3 km
+			source = WGCCRE2015
+		polar radius = 1559.5 km
+			source = WGCCRE2015
+		rms deviation from ellipsoid = 0.32 km
+			source = WGCCRE2015
+		mean density = 3.013 g/cm^3
+			error = 0.005
+			source = JPL Planetary Satellite Physical Parameters
+		gravitational parameter = 3202.739 km^3/s^2
+			error = 0.009
+			source = JPL Planetary Satellite Physical Parameters
+		rotation period = 3.551181 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 268.08 deg
+			source = WGCCRE2015
+		north pole dec = 64.51 deg
+			source = WGCCRE2015
+		meridian angle = 36.022 deg
+			source = WGCCRE2015
+		geometric albedo = 0.67
+			error = 0.03
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Ganymede, Jupiter III
+		radius = 2631.2 km
+			error = 1.7
+			source = WGCCRE2015
+			comment = mean, equatorial and polar radii are the same
+		mean density = 1.942 g/cm^3
+			error = 0.005
+			source = JPL Planetary Satellite Physical Parameters
+		gravitational parameter = 9887.834 km^3/s^2
+			error = 0.017
+			source = JPL Planetary Satellite Physical Parameters
+		rotation period = 7.154553 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 268.20 deg
+			source = WGCCRE2015
+		north pole dec = 64.57 deg
+			source = WGCCRE2015
+		meridian angle = 44.064 deg
+			source = WGCCRE2015
+		geometric albedo = 0.43
+			error = 0.02
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Callisto, Jupiter IV
+		radius = 2410.3 km
+			error = 1.5
+			source = WGCCRE2015
+			comment = mean, equatorial and polar radii are the same
+		rms deviation from ellipsoid = 0.6 km
+			source = WGCCRE2015
+		mean density = 1.834 g/cm^3
+			error = 0.004
+			source = JPL Planetary Satellite Physical Parameters
+		gravitational parameter = 7179.289 km^3/s^2
+			error = 0.013
+			source = JPL Planetary Satellite Physical Parameters
+		rotation period = 16.689018 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 268.72 deg
+			source = WGCCRE2015
+		north pole dec = 64.83 deg
+			source = WGCCRE2015
+		meridian angle = 259.51 deg
+			source = WGCCRE2015
+		geometric albedo = 0.17
+			error = 0.02
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Themisto, Jupiter XVIII, S/1975 J1
+		diameter = 10 km
+			source = johnstonsarchive.net Satellite data
+		
+		Leda, Jupiter XIII
+		diameter = 22 km
+			source = johnstonsarchive.net Satellite data
+		
+		Himalia, Jupiter VI
+		radius = 85 km
+			error = 10
+			source = WGCCRE2015
+		equatorial diameter = 150 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 120 km
+			source = johnstonsarchive.net Satellite data
+		
+		Ersa, Jupiter LXXI, S/2018 J1
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Pandia, Jupiter LXV, S/2017 J4
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Lysithea, Jupiter X
+		diameter = 42 km
+			source = johnstonsarchive.net Satellite data
+		
+		Elara, Jupiter XIII
+		radius = 40 km
+			error = 10
+			source = WGCCRE2015
+		
+		Dia, Jupiter LIII, S/2000 J11
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Carpo, Jupiter XLVI, S/2003 J20
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Valetudo, Jupiter LXII, S/2016 J2 
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2003 J12
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Euporie, Jupiter XXXIV, S/2001 J10
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2003 J18
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Jupiter LII, S/2003 J18
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2017 J7
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2016 J1
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2017 J3
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Orthosie, Jupiter XXXV, S/2001 J9
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Euanthe, Jupiter XXXIII, S/2001 J7
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Thyone, Jupiter XXIX, S/2001 J2
+		diameter = 6 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2003 J16
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Mneme, Jupiter XL, S/2003 J21
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Harpalyke, Jupiter XXII, S/2000 J5
+		diameter = 6 km
+			source = johnstonsarchive.net Satellite data
+		
+		Hermippe, Jupiter XXX, S/2001 J3
+		diameter = 6 km
+			source = johnstonsarchive.net Satellite data
+		
+		Praxidike, Jupiter XXVII, S/2000 J7
+		diameter = 7 km
+			source = johnstonsarchive.net Satellite data
+		
+		Thelxinoe, Jupiter XLII, S/2003 J22
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Eupheme, Jupiter LX, S/2003 J3
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Helike, Jupiter XLV, S/2003 J6
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Iocaste, Jupiter XXIV, S/2000 J3
+		diameter = 7 km
+			source = johnstonsarchive.net Satellite data
+		
+		Ananke, Jupiter XIII
+		diameter = 29 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2017 J9
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2003 J9
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2017 J6
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2011 J1
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2003 J19
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Philophrosyne, Jupiter LVIII, S/2003 J15
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Eurydome, Jupiter XXXII, S/2001 J4
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Arche, Jupiter XLIII, S/2002 J1
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Autonoe, Jupiter XXVIII, S/2001 J1
+		diameter = 6 km
+			source = johnstonsarchive.net Satellite data
+		
+		Pasithee, Jupiter XXXVIII, S/2001 J6
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Herse, Jupiter L, S/2003 J17
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Chaldene, Jupiter XXI, S/2000 J10
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Isonoe, Jupiter XXVI, S/2000 J6
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Kale, Jupiter XXXVII, S/2001 J8
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Aitne, Jupiter XXXI, S/2001 J11
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2017 J5
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2017 J8
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2003 J4
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Erinome, Jupiter XXV, S/2000 J4
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2017 J2
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Jupiter LI, S/2010 J1
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Taygete, Jupiter XX, S/2000 J9
+		diameter = 7 km
+			source = johnstonsarchive.net Satellite data
+		
+		Carme, Jupiter XI
+		diameter = 47 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2011 J2
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Sponde, Jupiter XXXVI, S/2001 J5
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2017 J1
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Kalyke, Jupiter XXIII, S/2000 J2
+		diameter = 7 km
+			source = johnstonsarchive.net Satellite data
+		
+		Pasiphae, Jupiter VII
+		diameter = 58 km
+			source = johnstonsarchive.net Satellite data
+		
+		Eukelade, Jupiter XLVII, S/2003 J1
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Eirene, Jupiter LVII, S/2003 J5
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Megaclite, Jupiter XIX, S/2000 J8
+		diameter = 7 km
+			source = johnstonsarchive.net Satellite data
+		
+		Sinope, Jupiter IX
+		diameter = 35 km
+			source = johnstonsarchive.net Satellite data
+		
+		Hegemone, Jupiter XXXIX, S/2003 J8
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Aoede, Jupiter XLI, S/2003 J7
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Kallichore, Jupiter XLIV, S/2003 J11
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2003 J23
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Callirrhoe, Jupiter XVII, S/1999 J1
+		diameter = 10 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2003 J10
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Cyllene, Jupiter XLVIII, S/2003 J13
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Kore, Jupiter XLIX, S/2003 J14
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2003 J2
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+	Saturnian system
+	horizons id = 6
+		
+		Saturn
+		mean radius = 58232 km
+			error = 6
+			source = WGCCRE2015
+			comment = radii correspond to a 1 bar surface
+		equatorial radius = 60268 km
+			error = 4
+			source = WGCCRE2015
+		polar radius = 54364 km
+			error = 10
+			source = WGCCRE2015
+		rms deviation = 102.9 km
+			source = WGCCRE2015
+		maximum elevation = 8 km
+			source = WGCCRE2015
+		maximum depression = 205 km
+			source = WGCCRE2015
+		north pole ra = 40.589 deg
+			source = WGCCRE2015
+		north pole dec = 83.537 deg
+			source = WGCCRE2015
+		meridian angle = 38.90 deg
+			source = WGCCRE2015
+		
+		S/2009 S1
+		diameter = 0.3 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.4714	day
+			source = johnstonsarchive.net Satellite data
+		
+		Pan, Saturn XVIII, S/1981 S13
+		mean radius = 14.0 km
+			error = 1.2
+			source = WGCCRE2015
+		subplanetary equatorial radius = 17.2 km
+			error = 1.7
+			source = WGCCRE2015
+		along orbit equatorial radius = 15.4 km
+			error = 1.2
+			source = WGCCRE2015
+		polar radius = 10.4 km
+			error = 0.9
+			source = WGCCRE2015
+		rotation period = 0.57505073 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 40.6 deg
+			source = WGCCRE2015
+		north pole dec = 83.5 deg
+			source = WGCCRE2015
+		meridian angle = 48.8 deg
+			source = WGCCRE2015
+		geometric albedo = 0.5
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Earhart
+		diameter = 0.5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Santos-Dumont
+		diameter = 0.2 km
+			source = johnstonsarchive.net Satellite data
+		
+		Bleriot
+		diameter = 0.9 km
+			source = johnstonsarchive.net Satellite data
+		
+		Daphnis, Saturn XXXV, S/2005 S1
+		mean radius = 3.8 km
+			error = 0.8
+			source = WGCCRE2015
+		subplanetary equatorial radius = 4.6 km
+			error = 0.7
+			source = WGCCRE2015
+		along orbit equatorial radius = 4.5 km
+			error = 0.9
+			source = WGCCRE2015
+		polar radius = 2.8 km
+			error = 0.8
+			source = WGCCRE2015
+		rotation period = 0.5941 day
+			source = johnstonsarchive.net Satellite data
+		
+		Atlas, Saturn XV, S/1980 S28
+		mean radius = 15.1 km
+			error = 0.8
+			source = WGCCRE2015
+		subplanetary equatorial radius = 20.5 km
+			error = 0.9
+			source = WGCCRE2015
+		along orbit equatorial radius = 17.8 km
+			error = 0.7
+			source = WGCCRE2015
+		polar radius = 9.4 km
+			error = 0.8
+			source = WGCCRE2015
+		rotation period = 0.60169075 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 40.58 deg
+			source = WGCCRE2015
+		north pole dec = 83.53 deg
+			source = WGCCRE2015
+		meridian angle = 137.88 deg
+			source = WGCCRE2015
+		geometric albedo = 0.4
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Prometheus, Saturn XVI, S/1980 S27
+		mean radius = 43.1 km
+			error = 1.2
+			source = WGCCRE2015
+		subplanetary equatorial radius = 20.5 km
+			error = 0.9
+			source = WGCCRE2015
+		along orbit equatorial radius = 17.8 km
+			error = 0.7
+			source = WGCCRE2015
+		polar radius = 9.4 km
+			error = 0.8
+			source = WGCCRE2015
+		rotation period = 0.612986 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 40.58 deg
+			source = WGCCRE2015
+		north pole dec = 83.53 deg
+			source = WGCCRE2015
+		meridian angle = 296.14 deg
+			source = WGCCRE2015
+		geometric albedo = 0.6
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Pandora, Saturn XVII, S/1980 S26
+		mean radius = 40.6 km
+			error = 1.5
+			source = WGCCRE2015
+		subplanetary equatorial radius = 52.2 km
+			error = 1.8
+			source = WGCCRE2015
+		along orbit equatorial radius = 40.8 km
+			error = 2.0
+			source = WGCCRE2015
+		polar radius = 31.5 km
+			error = 0.9
+			source = WGCCRE2015
+		rotation period = 0.6285 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 40.58 deg
+			source = WGCCRE2015
+		north pole dec = 83.53 deg
+			source = WGCCRE2015
+		meridian angle = 162.92 deg
+			source = WGCCRE2015
+		geometric albedo = 0.5
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Epimetheus, Saturn XI, S/1980 S3
+		mean radius = 58.2 km
+			error = 1.2
+			source = WGCCRE2015
+		subplanetary equatorial radius = 64.9 km
+			error = 1.3
+			source = WGCCRE2015
+		along orbit equatorial radius = 57.3 km
+			error = 2.5
+			source = WGCCRE2015
+		polar radius = 53.0 km
+			error = 0.5
+			source = WGCCRE2015
+		rotation period = 0.6943 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 40.58 deg
+			source = WGCCRE2015
+		north pole dec = 83.53 deg
+			source = WGCCRE2015
+		meridian angle = 293.87 deg
+			source = WGCCRE2015
+		geometric albedo = 0.73
+			error = 0.03
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Janus, Saturn X, S/1966 S2
+		mean radius = 89.2 km
+			error = 0.8
+			source = WGCCRE2015
+		subplanetary equatorial radius = 101.7 km
+			error = 1.6
+			source = WGCCRE2015
+		along orbit equatorial radius = 93.0 km
+			error = 0.7
+			source = WGCCRE2015
+		polar radius = 76.3 km
+			error = 0.4
+			source = WGCCRE2015
+		rotation period = 0.6947 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 40.58 deg
+			source = WGCCRE2015
+		north pole dec = 83.53 deg
+			source = WGCCRE2015
+		meridian angle = 58.83 deg
+			source = WGCCRE2015
+		geometric albedo = 0.71
+			error = 0.02
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Aegaeon, Saturn LIII, S/2008 S1
+		mean radius = 0.33 km
+			error = 0.06
+			source = WGCCRE2015
+		subplanetary equatorial radius = 0.7 km
+			error = 0.05
+			source = WGCCRE2015
+		along orbit equatorial radius = 0.25 km
+			error = 0.06
+			source = WGCCRE2015
+		polar radius = 0.2 km
+			error = 0.08
+			source = WGCCRE2015
+		rotation period = 0.808 day
+			source = johnstonsarchive.net Satellite data
+		
+		Mimas, Saturn I
+		mean radius = 198.2 km
+			error = 0.4
+			source = WGCCRE2015
+		subplanetary equatorial radius = 207.8 km
+			error = 0.5
+			source = WGCCRE2015
+		along orbit equatorial radius = 196.7 km
+			error = 0.5
+			source = WGCCRE2015
+		polar radius = 190.6 km
+			error = 0.3
+			source = WGCCRE2015
+		rotation period = 0.942422 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 40.66 deg
+			source = WGCCRE2015
+		north pole dec = 83.52 deg
+			source = WGCCRE2015
+		meridian angle = 333.46 deg
+			source = WGCCRE2015
+		geometric albedo = 0.962
+			error = 0.004
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Methone, Saturn XXXII, S/2004 S1
+		mean radius = 1.45 km
+			error = 0.03
+			source = WGCCRE2015
+		subplanetary equatorial radius = 1.94 km
+			error = 0.02
+			source = WGCCRE2015
+		along orbit equatorial radius = 1.29 km
+			error = 0.04
+			source = WGCCRE2015
+		polar radius = 1.21 km
+			error = 0.02
+			source = WGCCRE2015
+		rotation period = 1.009714 day
+			source = johnstonsarchive.net Satellite data
+		
+		Anthe, Saturn XLIX, S/2007 S4
+		equatorial diameter = 2.3 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 1.7 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 1.0351 day
+			source = johnstonsarchive.net Satellite data
+		
+		Pallene, Saturn XXXIII, S/1981 S14
+		mean radius = 2.23 km
+			error = 0.07
+			source = WGCCRE2015
+		subplanetary equatorial radius = 2.88 km
+			error = 0.07
+			source = WGCCRE2015
+		along orbit equatorial radius = 2.08 km
+			error = 0.07
+			source = WGCCRE2015
+		polar radius = 1.8 km
+			error = 0.07
+			source = WGCCRE2015
+		rotation period = 1.15375 day
+			source = johnstonsarchive.net Satellite data
+		
+		Enceladus, Saturn II
+		mean radius = 252.1 km
+			error = 0.2
+			source = WGCCRE2015
+		subplanetary equatorial radius = 256.6 km
+			error = 0.6
+			source = WGCCRE2015
+		along orbit equatorial radius = 251.4 km
+			error = 0.2
+			source = WGCCRE2015
+		polar radius = 248.3 km
+			error = 0.2
+			source = WGCCRE2015
+		rms deviation from ellipsoid = 0.4 km
+			source = WGCCRE2015
+		rotation period = 1.370218 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 40.66 deg
+			source = WGCCRE2015
+		north pole dec = 83.52 deg
+			source = WGCCRE2015
+		meridian angle = 6.32 deg
+			source = WGCCRE2015
+		geometric albedo = 1.375
+			error = 0.008
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Tethys, Saturn III
+		mean radius = 531.0 km
+			error = 0.6
+			source = WGCCRE2015
+		subplanetary equatorial radius = 538.4 km
+			error = 0.3
+			source = WGCCRE2015
+		along orbit equatorial radius = 528.3 km
+			error = 1.1
+			source = WGCCRE2015
+		polar radius = 526.3 km
+			error = 0.6
+			source = WGCCRE2015
+		rotation period = 1.887802 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 40.66 deg
+			source = WGCCRE2015
+		north pole dec = 83.52 deg
+			source = WGCCRE2015
+		meridian angle = 8.95 deg
+			source = WGCCRE2015
+		geometric albedo = 1.229
+			error = 0.005
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Telesto, Saturn XIII, S/1980 S13
+		mean radius = 12.4 km
+			error = 0.4
+			source = WGCCRE2015
+		subplanetary equatorial radius = 16.3 km
+			error = 0.5
+			source = WGCCRE2015
+		along orbit equatorial radius = 11.8 km
+			error = 0.3
+			source = WGCCRE2015
+		polar radius = 9.8 km
+			error = 0.3
+			source = WGCCRE2015
+		rotation period = 1.887802 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 50.51 deg
+			source = WGCCRE2015
+		north pole dec = 84.06 deg
+			source = WGCCRE2015
+		meridian angle = 56.88 deg
+			source = WGCCRE2015
+		geometric albedo = 1.0
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Calypso, Saturn XIV, S/1980 S25
+		mean radius = 9.6 km
+			error = 0.6
+			source = WGCCRE2015
+		subplanetary equatorial radius = 15.3 km
+			error = 0.3
+			source = WGCCRE2015
+		along orbit equatorial radius = 9.3 km
+			error = 2.2
+			source = WGCCRE2015
+		polar radius = 6.3 km
+			error = 0.6
+			source = WGCCRE2015
+		rotation period = 1.887802 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 36.41 deg
+			source = WGCCRE2015
+		north pole dec = 85.04 deg
+			source = WGCCRE2015
+		meridian angle = 153.51 deg
+			source = WGCCRE2015
+		geometric albedo = 1.34
+			error = 0.10
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Polydeuces, Saturn XXXIV, S/2004 S5
+		mean radius = 1.3 km
+			error = 0.4
+			source = WGCCRE2015
+		subplanetary equatorial radius = 1.5 km
+			error = 0.6
+			source = WGCCRE2015
+		along orbit equatorial radius = 1.2 km
+			error = 0.4
+			source = WGCCRE2015
+		polar radius = 1.0 km
+			error = 0.2
+			source = WGCCRE2015
+		rotation period = 2.7369 day
+			source = johnstonsarchive.net Satellite data
+		
+		Dione, Saturn IV
+		mean radius = 561.4 km
+			error = 0.4
+			source = WGCCRE2015
+		subplanetary equatorial radius = 563.4 km
+			error = 0.6
+			source = WGCCRE2015
+		along orbit equatorial radius = 561.3 km
+			error = 0.5
+			source = WGCCRE2015
+		polar radius = 559.6 km
+			error = 0.4
+			source = WGCCRE2015
+		rms deviation from ellipsoid = 0.5 km
+			source = WGCCRE2015
+		rotation period = 2.736915 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 40.66 deg
+			source = WGCCRE2015
+		north pole dec = 83.52 deg
+			source = WGCCRE2015
+		meridian angle = 357.6 deg
+			source = WGCCRE2015
+		geometric albedo = 0.998
+			error = 0.004
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Helene, Saturn XII, S/1980 S6
+		mean radius = 18.0 km
+			error = 0.4
+			source = WGCCRE2015
+		subplanetary equatorial radius = 22.5 km
+			error = 0.5
+			source = WGCCRE2015
+		along orbit equatorial radius = 19.6 km
+			error = 0.3
+			source = WGCCRE2015
+		polar radius = 13.3 km
+			error = 0.2
+			source = WGCCRE2015
+		rotation period = 2.7369 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 40.85 deg
+			source = WGCCRE2015
+		north pole dec = 83.34 deg
+			source = WGCCRE2015
+		meridian angle = 245.12 deg
+			source = WGCCRE2015
+		geometric albedo = 1.67
+			error = 0.20
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Rhea, Saturn V
+		mean radius = 763.5 km
+			error = 0.6
+			source = WGCCRE2015
+		subplanetary equatorial radius = 765.0 km
+			error = 0.7
+			source = WGCCRE2015
+		along orbit equatorial radius = 763.1 km
+			error = 0.6
+			source = WGCCRE2015
+		polar radius = 762.4 km
+			error = 0.6
+			source = WGCCRE2015
+		rotation period = 4.517500 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 40.38 deg
+			source = WGCCRE2015
+		north pole dec = 83.55 deg
+			source = WGCCRE2015
+		meridian angle = 235.16 deg
+			source = WGCCRE2015
+		geometric albedo = 0.949
+			error = 0.003
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Titan, Saturn VI
+		mean radius = 2574.73 km
+			error = 0.09
+			source = WGCCRE2015
+			comment = cartographic and elevation reference standart is 2575 km
+		subplanetary equatorial radius = 2575.15 km
+			error = 0.02
+			source = WGCCRE2015
+		along orbit equatorial radius = 2574.78 km
+			error = 0.06
+			source = WGCCRE2015
+		polar radius = 2574.47 km
+			error = 0.06
+			source = WGCCRE2015
+		rms deviation from ellipsoid = 0.26 km
+			source = WGCCRE2015
+		rotation period = 15.945421 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 39.4827 deg
+			source = WGCCRE2015
+		north pole dec = 83.4279 deg
+			source = WGCCRE2015
+		meridian angle = 186.5855 deg
+			source = WGCCRE2015
+		geometric albedo = 0.2
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Hyperion, Saturn VII
+		mean radius = 135 km
+			error = 4
+			source = WGCCRE2015
+		subplanetary equatorial radius = 180.1 km
+			error = 2.0
+			source = WGCCRE2015
+		along orbit equatorial radius = 133.0 km
+			error = 4.5
+			source = WGCCRE2015
+		polar radius = 102.7 km
+			error = 4.5
+			source = WGCCRE2015
+		geometric albedo = 0.3
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Iapetus, Saturn VIII
+		mean radius = 734.3 km
+			error = 2.8
+			source = WGCCRE2015
+		equatorial radius = 745.7 km
+			error = 2.9
+			source = WGCCRE2015
+		polar radius = 712.1 km
+			error = 1.6
+			source = WGCCRE2015
+		north pole ra = 318.16 deg
+			source = WGCCRE2015
+		north pole dec = 75.03 deg
+			source = WGCCRE2015
+		meridian angle = 355.2 deg
+			source = WGCCRE2015
+		geometric albedo = 0.6
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Kiviuq, Saturn XXIV, S/2000 S5
+		equatorial diameter = 22 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 10 km
+			source = johnstonsarchive.net Satellite data
+		
+		Ijiraq, Saturn XXII, S/2000 S6
+		equatorial diameter = 12 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 11 km
+			source = johnstonsarchive.net Satellite data
+		
+		Phoebe, Saturn IX
+		mean radius = 106.5 km
+			error = 0.7
+			source = WGCCRE2015
+		subplanetary equatorial radius = 109.4 km
+			error = 1.4
+			source = WGCCRE2015
+		along orbit equatorial radius = 108.5 km
+			error = 0.6
+			source = WGCCRE2015
+		polar radius = 101.8 km
+			error = 0.3
+			source = WGCCRE2015
+		north pole ra = 356.90 deg
+			source = WGCCRE2015
+		north pole dec = 77.80 deg
+			source = WGCCRE2015
+		meridian angle = 178.58 deg
+			source = WGCCRE2015
+		geometric albedo = 0.081
+			error = 0.002
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Paaliaq, Saturn XX, S/2000 S2
+		equatorial diameter = 21 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 20 km
+			source = johnstonsarchive.net Satellite data
+		
+		Skathi, Saturn XXVII, S/2000 S8
+		equatorial diameter = 8 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 6 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S37
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Albiorix, Saturn XXVI, S/2000 S11
+		equatorial diameter = 33 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 25 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2007 S2
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S29
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Bebhionn, Saturn XXXVII, S/2004 S11
+		equatorial diameter = 7 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Erriapus, Saturn XXVIII, S/2000 S10
+		equatorial diameter = 11 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 8 km
+			source = johnstonsarchive.net Satellite data
+		
+		Siarnaq, Saturn XXIX, S/2000 S3
+		equatorial diameter = 42 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 36 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S31
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Skoll, Saturn XLVII, S/2006 S8
+		equatorial diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Tarvos, Saturn XXI, S/2000 S4
+		equatorial diameter = 15 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 14 km
+			source = johnstonsarchive.net Satellite data
+		
+		Tarqeq, Saturn LII, S/2007 S1
+		equatorial diameter = 7 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Greip, Saturn LI, S/2006 S4
+		equatorial diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Hyrokkin, Saturn XLIV, S/2004 S19
+		equatorial diameter = 8 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 7 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S13
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S17
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Mundilfari, Saturn XXV, S/2000 S9
+		equatorial diameter = 8 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Jarnsaxa, Saturn L, S/2006 S6
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2006 S1
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Narvi, Saturn XXXI, S/2003 S1
+		diameter = 6 km
+			source = johnstonsarchive.net Satellite data
+		
+		Bergelmir, Saturn XXXVIII, S/2004 S15
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S20
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Suttungr, Saturn XXIII, S/2000 S12
+		equatorial diameter = 7 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 6 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S12
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S7
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Hati, Saturn XLIII, S/2004 S14
+		equatorial diameter = 6 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S27
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Bestla, Saturn XXXIX, S/2004 S18
+		equatorial diameter = 8 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Farbauti, Saturn XL, S/2004 S9
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Thrymr, Saturn XXX, S/2000 S7
+		equatorial diameter = 7 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 6 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2007 S3
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2007 S22
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2007 S30
+		diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		Aegir, Saturn XXXVI, S/2004 S10
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2006 S3
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S23
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S25
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S32
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S38
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S28
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Kari, Saturn XLV, S/2006 S2
+		equatorial diameter = 8 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S35
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Fenrir, Saturn XLI, S/2004 S16
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S21
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Surtur, Saturn XLVIII, S/2006 S7
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S24
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		Ymir, Saturn XIX, S/2000 S1
+		equatorial diameter = 20 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 14 km
+			source = johnstonsarchive.net Satellite data
+		
+		Loge, Saturn XLVI, S/2006 S5
+		equatorial diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S36
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S39
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S33
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S34
+		diameter = 3 km
+			source = johnstonsarchive.net Satellite data
+		
+		Fornjot, Saturn XLII, S/2004 S8
+		equatorial diameter = 5 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+		S/2004 S26
+		diameter = 4 km
+			source = johnstonsarchive.net Satellite data
+		
+	Uranian system
+	horizons id = 7
+		
+		Uranus
+		mean radius = 25362 km
+			error = 7
+			source = WGCCRE2015
+			comment = radii correspond to a 1 bar surface
+		equatorial radius = 25559 km
+			error = 4
+			source = WGCCRE2015
+		polar radius = 24973 km
+			error = 20
+			source = WGCCRE2015
+		rms deviation from spheroid = 16.8 km
+			source = WGCCRE2015
+		maximum elevation = 28 km
+			source = WGCCRE2015
+		maximum depression = 0 km
+			source = WGCCRE2015
+		north pole ra = 257.331 deg
+			source = WGCCRE2015
+		north pole dec = -15.175 deg
+			source = WGCCRE2015
+		meridian angle = 203.81 deg
+			source = WGCCRE2015
+		
+		Cordelia, Uranus VI, S/1986 U7
+		equatorial diameter = 50 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 36 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.335033 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.31 deg
+			source = WGCCRE2015
+		north pole dec = -15.18 deg
+			source = WGCCRE2015
+		meridian angle = 127.69 deg
+			source = WGCCRE2015
+		geometric albedo = 0.07
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Ophelia, Uranus VII, S/1986 U8
+		equatorial diameter = 54 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 38 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.376404 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.31 deg
+			source = WGCCRE2015
+		north pole dec = -15.18 deg
+			source = WGCCRE2015
+		meridian angle = 130.35 deg
+			source = WGCCRE2015
+		geometric albedo = 0.07
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Bianca, Uranus VIII, S/1986 U9
+		equatorial diameter = 64 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 46 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.434577 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.31 deg
+			source = WGCCRE2015
+		north pole dec = -15.18 deg
+			source = WGCCRE2015
+		meridian angle = 105.46 deg
+			source = WGCCRE2015
+		geometric albedo = 0.065
+			error = 0.010
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Cressida, Uranus IX, S/1986 U3
+		equatorial diameter = 94 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 74 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.46357 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.31 deg
+			source = WGCCRE2015
+		north pole dec = -15.18 deg
+			source = WGCCRE2015
+		meridian angle = 59.16 deg
+			source = WGCCRE2015
+		geometric albedo = 0.069
+			error = 0.007
+			source = JPL Planetary Satellite Physical Parameters
+			
+		Desdemona, Uranus X, S/1986 U6
+		equatorial diameter = 90 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 54 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.473651 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.31 deg
+			source = WGCCRE2015
+		north pole dec = -15.18 deg
+			source = WGCCRE2015
+		meridian angle = 95.08 deg
+			source = WGCCRE2015
+		geometric albedo = 0.084
+			error = 0.019
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Juliet, Uranus XI, S/1986 U2
+		equatorial diameter = 150 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 74 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.493066 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.31 deg
+			source = WGCCRE2015
+		north pole dec = -15.18 deg
+			source = WGCCRE2015
+		meridian angle = 302.56 deg
+			source = WGCCRE2015
+		geometric albedo = 0.075
+			error = 0.011
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Portia, Uranus XII, S/1986 U2
+		equatorial diameter = 156 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 126 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.513196 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.31 deg
+			source = WGCCRE2015
+		north pole dec = -15.18 deg
+			source = WGCCRE2015
+		meridian angle = 25.03 deg
+			source = WGCCRE2015
+		geometric albedo = 0.069
+			error = 0.008
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Rosalind, Uranus XII, S/1986 U4
+		diameter = 72 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.558459 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.31 deg
+			source = WGCCRE2015
+		north pole dec = -15.18 deg
+			source = WGCCRE2015
+		meridian angle = 314.90 deg
+			source = WGCCRE2015
+		geometric albedo = 0.072
+			error = 0.024
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Cupid, Uranus XXVII, S/2003 U2
+		diameter = 18 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.618 day
+			source = johnstonsarchive.net Satellite data
+		
+		Belinda, Uranus XIV, S/1986 U5
+		equatorial diameter = 128 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 64 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.623525 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.31 deg
+			source = WGCCRE2015
+		north pole dec = -15.18 deg
+			source = WGCCRE2015
+		meridian angle = 297.46 deg
+			source = WGCCRE2015
+		geometric albedo = 0.067
+			error = 0.024
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Perdita, Uranus XXV, S/1986 U10
+		diameter = 30 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.638018 day
+			source = johnstonsarchive.net Satellite data
+		
+		Puck, Uranus XV, S/1985 U1
+		subplanetary equatorial radius = 167 km
+			source = johnstonsarchive.net Satellite data
+		along orbit equatorial radius = 162 km
+			source = johnstonsarchive.net Satellite data
+		along orbit equatorial radius = 157 km
+			source = johnstonsarchive.net Satellite data
+		rms deviation from ellipsoid = 1.9
+			source = WGCCRE2015
+		rotation period = 0.761832 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.31 deg
+			source = WGCCRE2015
+		north pole dec = -15.18 deg
+			source = WGCCRE2015
+		meridian angle = 91.24 deg
+			source = WGCCRE2015
+		geometric albedo = 0.104
+			error = 0.006
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Mab, Uranus XXVI, S/2003 U1
+		diameter = 25 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.9229 day
+			source = johnstonsarchive.net Satellite data
+		
+		Miranda, Uranus V
+		mean radius = 235.8 km
+			error = 0.7
+			source = WGCCRE2015
+		subplanetary equatorial radius = 240.4 km
+			error = 0.6
+			source = WGCCRE2015
+		along orbit equatorial radius = 234.2 km
+			error = 0.9
+			source = WGCCRE2015
+		polar radius = 232.9 km
+			error = 1.2
+			source = WGCCRE2015
+		rms deviation from ellipsoid = 1.6 km
+			source = WGCCRE2015
+		maximum elevation = 5 km
+			source = WGCCRE2015
+		maximum depression = 8 km
+			source = WGCCRE2015
+		mean density = 1.214 g/cm^3
+			error = 0.109
+			source = JPL Planetary Satellite Physical Parameters
+		gravitational parameter = 4.4 km^3/s^2
+			error = 0.4
+			source = JPL Planetary Satellite Physical Parameters
+		rotation period = 1.413479 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.43 deg
+			source = WGCCRE2015
+		north pole dec = -15.08 deg
+			source = WGCCRE2015
+		meridian angle = 30.70 deg
+			source = WGCCRE2015
+		geometric albedo = 0.32
+			error = 0.03
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Ariel, Uranus I
+		mean radius = 578.9 km
+			error = 0.6
+			source = WGCCRE2015
+		subplanetary equatorial radius = 581.1 km
+			error = 0.9
+			source = WGCCRE2015
+		along orbit equatorial radius = 577.9 km
+			error = 0.6
+			source = WGCCRE2015
+		polar radius = 577.7 km
+			error = 1.0
+			source = WGCCRE2015
+		rms deviation from ellipsoid = 0.9 km
+			source = WGCCRE2015
+		maximum elevation = 4 km
+			source = WGCCRE2015
+		maximum depression = 4 km
+			source = WGCCRE2015
+		mean density = 1.592 g/cm^3
+			error = 0.092
+			source = JPL Planetary Satellite Physical Parameters
+		gravitational parameter = 86.4 km^3/s^2
+			error = 5.0
+			source = JPL Planetary Satellite Physical Parameters
+		rotation period = 2.520379 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.43 deg
+			source = WGCCRE2015
+		north pole dec = -15.10 deg
+			source = WGCCRE2015
+		meridian angle = 156.22 deg
+			source = WGCCRE2015
+		geometric albedo = 0.39
+			error = 0.04
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Umbriel, Uranus II
+		radius = 584.7 km
+			error = 2.8
+			source = WGCCRE2015
+		rms deviation from ellipsoid = 2.6 km
+			source = WGCCRE2015
+		maximum depression = 6 km
+			source = WGCCRE2015
+		mean density = 14.47 g/cm^3
+			error = 0.04
+			source = JPL Planetary Satellite Physical Parameters
+		gravitational parameter = 81.5 km^3/s^2
+			error = 5.0
+			source = JPL Planetary Satellite Physical Parameters
+		rotation period = 4.1441772 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.43 deg
+			source = WGCCRE2015
+		north pole dec = -15.10 deg
+			source = WGCCRE2015
+		meridian angle = 108.05 deg
+			source = WGCCRE2015
+		geometric albedo = 0.21
+			error = 0.02
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Titania, Uranus III
+		mean radius = 788.9 km
+			error = 1.8
+			source = WGCCRE2015
+		rms deviation from ellipsoid = 1.3 km
+			source = WGCCRE2015
+		maximum elevation = 4 km
+			source = WGCCRE2015
+		mean density = 13.49 g/cm^3
+			error = 0.04
+			source = JPL Planetary Satellite Physical Parameters
+		gravitational parameter = 228.2 km^3/s^2
+			error = 5.0
+			source = JPL Planetary Satellite Physical Parameters
+		rotation period = 8.705872 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.43 deg
+			source = WGCCRE2015
+		north pole dec = -15.10 deg
+			source = WGCCRE2015
+		meridian angle = 77.74 deg
+			source = WGCCRE2015
+		geometric albedo = 0.27
+			error = 0.03
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Oberon, Uranus IV
+		mean radius = 761.4 km
+			error = 2.6
+			source = WGCCRE2015
+		rms deviation from ellipsoid = 1.5 km
+			source = WGCCRE2015
+		maximum elevation = 12 km
+			source = WGCCRE2015
+		maximum depression = 2 km
+			source = WGCCRE2015
+		mean density = 13.70 g/cm^3
+			error = 0.04
+			source = JPL Planetary Satellite Physical Parameters
+		gravitational parameter = 192.4 km^3/s^2
+			error = 7.0
+			source = JPL Planetary Satellite Physical Parameters
+		rotation period = 13.463239 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 257.43 deg
+			source = WGCCRE2015
+		north pole dec = -15.10 deg
+			source = WGCCRE2015
+		meridian angle = 6.77 deg
+			source = WGCCRE2015
+		geometric albedo = 0.23
+			error = 0.03
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Francisco, Uranus XXII, S/2001 U3
+		diameter = 18 km
+			source = johnstonsarchive.net Satellite data
+		
+		Caliban, Uranus XVI, S/1997 U1
+		rotation period = 9.948 h
+			error = 0.019
+			source = https://iopscience.iop.org/article/10.3847/1538-3881/aa8365
+			comment = Table 4, data by K2, double-peak rotation period
+		delta magnitude = 0.16 mag
+			error = 0.03
+			source = https://iopscience.iop.org/article/10.3847/1538-3881/aa8365
+			comment = Table 4, data by K2, double-peak rotation period
+		equatorial diameter = 78 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 67 km
+			source = johnstonsarchive.net Satellite data
+		
+		Stephano, Uranus XX, S/1999 U3
+		diameter = 28 km
+			source = johnstonsarchive.net Satellite data
+		
+		Trinculo, Uranus XXI, S/2001 U1
+		diameter = 15 km
+			source = johnstonsarchive.net Satellite data
+		
+		Sycorax, Uranus XVII, S/1997 U2
+		rotation period = 6.9162 h
+			error = 0.0013
+			source = https://iopscience.iop.org/article/10.3847/1538-3881/aa8365
+			comment = Table 4, data by K2 and 1m konkoly observatory, double-peak rotation period
+		delta magnitude = 0.120 mag
+			error = 0.019
+			source = https://iopscience.iop.org/article/10.3847/1538-3881/aa8365
+			comment = Table 4, data by K2 and 1m konkoly observatory, double-peak rotation period
+		equatorial diameter = 159 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 142 km
+			source = johnstonsarchive.net Satellite data
+		
+		Margaret, Uranus XXIII, S/2003 U3
+		diameter = 17 km
+			source = johnstonsarchive.net Satellite data
+		
+		Prospero, Uranus XVIII, S/1999 U2
+		rotation period = 7.145 h
+			error = 0.092
+			source = https://iopscience.iop.org/article/10.3847/1538-3881/aa8365
+			comment = Table 4, data by K2, single-peak rotation period
+		delta magnitude = 0.41 mag
+			error = 0.07
+			source = https://iopscience.iop.org/article/10.3847/1538-3881/aa8365
+			comment = Table 4, data by K2, single-peak rotation period
+		equatorial diameter = 51 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 35 km
+			source = johnstonsarchive.net Satellite data
+		
+		Setebos, Uranus XIX, S/1999 U1
+		rotation period = 4.255 h
+			error = 0.017
+			source = https://iopscience.iop.org/article/10.3847/1538-3881/aa8365
+			comment = Table 4, data by K2, single-peak rotation period
+		delta magnitude = 0.27 mag
+			error = 0.06
+			source = https://iopscience.iop.org/article/10.3847/1538-3881/aa8365
+			comment = Table 4, data by K2, single-peak rotation period
+		equatorial diameter = 45 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 35 km
+			source = johnstonsarchive.net Satellite data
+		
+		Ferdinand, Uranus XXIV, S/2001 U2
+		rotation period = 11.84 h
+			error = 0.22
+			source = https://iopscience.iop.org/article/10.3847/1538-3881/aa8365
+			comment = Table 4, data by K2, single-peak rotation period
+		delta magnitude = 0.54 mag
+			error = 0.09
+			source = https://iopscience.iop.org/article/10.3847/1538-3881/aa8365
+			comment = Table 4, data by K2, single-peak rotation period
+		equatorial diameter = 22 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 14 km
+			source = johnstonsarchive.net Satellite data
+		
+	Neptunian system
+	horizons id = 8
+		
+		Neptune
+		mean radius = 24622 km
+			error = 19
+			source = WGCCRE2015
+			comment = radii correspond to a 1 bar surface
+		equatorial radius = 24764 km
+			error = 15
+			source = WGCCRE2015
+		polar radius = 24341 km
+			error = 30
+			source = WGCCRE2015
+		rms deviation from spheroid = 8 km
+			source = WGCCRE2015
+		maximum elevation = 14 km
+			source = WGCCRE2015
+		maximum depression = 0 km
+			source = WGCCRE2015
+		north pole ra = 299.36 deg
+			source = WGCCRE2015
+		north pole dec = 43.46 deg
+			source = WGCCRE2015
+		meridian angle = 249.978 deg
+			source = WGCCRE2015
+		
+		Naiad, Neptune III, S/1989 N6
+		subplanetary equatorial diameter = 96 km
+			source = johnstonsarchive.net Satellite data
+		along orbit equatorial diameter = 60 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 52 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.2943956 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 299.36 deg
+			source = WGCCRE2015
+		north pole dec = 43.36 deg
+			source = WGCCRE2015
+		meridian angle = 254.06 deg
+			source = WGCCRE2015
+		geometric albedo = 0.072
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Thalassa, Neptune IV, S/1989 N5
+		subplanetary equatorial diameter = 108 km
+			source = johnstonsarchive.net Satellite data
+		along orbit equatorial diameter = 100 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 52 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.3114846 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 299.36 deg
+			source = WGCCRE2015
+		north pole dec = 43.45 deg
+			source = WGCCRE2015
+		meridian angle = 102.06 deg
+			source = WGCCRE2015
+		geometric albedo = 0.091
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Despina, Neptune V, S/1989 N3
+		subplanetary equatorial diameter = 180 km
+			source = johnstonsarchive.net Satellite data
+		along orbit equatorial diameter = 148 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 128 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.4287451 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 299.36 deg
+			source = WGCCRE2015
+		north pole dec = 43.45 deg
+			source = WGCCRE2015
+		meridian angle = 306.51 deg
+			source = WGCCRE2015
+		geometric albedo = 0.090
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Galatea, Neptune VI, S/1989 N4
+		subplanetary equatorial diameter = 204 km
+			source = johnstonsarchive.net Satellite data
+		along orbit equatorial diameter = 184 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 144 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.3346552 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 299.36 deg
+			source = WGCCRE2015
+		north pole dec = 43.43 deg
+			source = WGCCRE2015
+		meridian angle = 258.09 deg
+			source = WGCCRE2015
+		geometric albedo = 0.079
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Larissa, Neptune VII, S/1989 N2
+		subplanetary equatorial diameter = 216 km
+			source = johnstonsarchive.net Satellite data
+		along orbit equatorial diameter = 204 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 168 km
+			source = johnstonsarchive.net Satellite data
+		rms deviation from ellipsoid = 2.9 km
+			source = WGCCRE2015
+		maximum elevation = 6 km
+			source = WGCCRE2015
+		maximum depression = 5 km
+			source = WGCCRE2015
+		rotation period = 0.5546538 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 299.36 deg
+			source = WGCCRE2015
+		north pole dec = 43.41 deg
+			source = WGCCRE2015
+		meridian angle = 179.41 deg
+			source = WGCCRE2015
+		geometric albedo = 0.091
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Hippocamp, Neptune XIV, S/2004 N1
+		diameter = 35 km
+			source = johnstonsarchive.net Satellite data
+		rotation period = 0.936 day
+			source = johnstonsarchive.net Satellite data
+		
+		Proteus, Neptune VIII, S/1981 N1
+		subplanetary equatorial diameter = 440 km
+			source = johnstonsarchive.net Satellite data
+		along orbit equatorial diameter = 416 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 404 km
+			source = johnstonsarchive.net Satellite data
+		rms deviation from ellipsoid = 7.9 km
+			source = WGCCRE2015
+		maximum elevation = 18 km
+			source = WGCCRE2015
+		maximum depression = 13 km
+			source = WGCCRE2015
+		rotation period = 1.122316 day
+			source = johnstonsarchive.net Satellite data
+		north pole ra = 299.27 deg
+			source = WGCCRE2015
+		north pole dec = 42.91 deg
+			source = WGCCRE2015
+		meridian angle = 93.38 deg
+			source = WGCCRE2015
+		geometric albedo = 0.096
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Triton, Neptune I
+		subplanetary equatorial diameter = 2709 km
+			source = johnstonsarchive.net Satellite data
+		along orbit equatorial diameter = 2706 km
+			source = johnstonsarchive.net Satellite data
+		polar diameter = 2705 km
+			source = johnstonsarchive.net Satellite data
+		mean density = 2.059 g/cm^3
+			error = 0.005
+			source = JPL Planetary Satellite Physical Parameters
+		gravitational parameter = 1427.6 km^3/s^2
+			error = 1.9
+			source = JPL Planetary Satellite Physical Parameters
+		north pole ra = 299.36 deg
+			source = WGCCRE2015
+		north pole dec = 41.17 deg
+			source = WGCCRE2015
+		meridian angle = 296.53 deg
+			source = WGCCRE2015
+		
+		Nereid, Neptune II
+		diameter = 357 km
+			source = johnstonsarchive.net Satellite data
+		geometric albedo = 0.155
+			source = JPL Planetary Satellite Physical Parameters
+		
+		Halimede, Neptune IX, S/2002 N1
+		diameter = 61 km
+			source = johnstonsarchive.net Satellite data
+		
+		Sao, Neptune XI, S/2002 N2
+		diameter = 40 km
+			source = johnstonsarchive.net Satellite data
+		
+		Laomedeia, Neptune XII, S/2002 N3
+		diameter = 40 km
+			source = johnstonsarchive.net Satellite data
+		
+		Psamathe, Neptune X, S/2003 N1
+		diameter = 38 km
+			source = johnstonsarchive.net Satellite data
+		
+		Neso, Neptune XIII, S/2002 N4
+		diameter = 60 km
+			source = johnstonsarchive.net Satellite data
