@@ -1,6 +1,5 @@
 
 # AstroLib, version of February 24, 2020
-# A lot of new physical parameters, commands and other improvements
 
 
 import astropy.units as u

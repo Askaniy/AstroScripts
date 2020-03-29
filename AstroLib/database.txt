@@ -123,7 +123,7 @@ Solar system, Sol
 		mean radius = 3389.50 km
 			error = 0.2
 			source = WGCCRE2015
-		equatorial radius = 3369.19 km
+		equatorial radius = 3396.19 km
 			error = 0.1
 			source = WGCCRE2015
 		mean polar radius = 3376.20 km
