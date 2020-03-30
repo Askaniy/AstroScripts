@@ -14,9 +14,9 @@ import discord
 import json
 
 
-bot = True
-path = "X:/Documents/Development/AstroLib/Database"
-token_path = "X:/Documents/Development/AstroLib/ExternalData/discord_bot_token.txt"
+bot = False
+path = ".../Database"
+token_path = ".../discord_bot_token.txt"
 
 
 supported_requests = {

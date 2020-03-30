@@ -9,10 +9,11 @@ import os
 import sys
 import discord
 
-bot = False
 
-path = "X:/Documents/GitHub/AstroScripts/AstroLib/Database/universe.txt"
-token_path = "X:/Documents/GitHub/ExternalData/discord_bot_token.txt"
+bot = False
+path = ".../Database"
+token_path = ".../discord_bot_token.txt"
+
 
 links = {
     "WGCCRE2015": "https://astropedia.astrogeology.usgs.gov/download/Docs/WGCCRE/WGCCRE2015reprint.pdf",

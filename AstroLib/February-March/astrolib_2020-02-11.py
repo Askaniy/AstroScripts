@@ -6,7 +6,7 @@
 import codecs
 import re
 
-path = ".../database.txt"
+path = ".../Database/database.txt"
 
 def read_request(request):
     request = [x.lower() for x in request]

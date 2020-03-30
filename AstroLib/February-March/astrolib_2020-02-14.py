@@ -11,7 +11,7 @@ import sys
 import discord
 
 token = open(".../discord_bot_token.txt").read()
-path = ".../database.txt"
+path = ".../Database/database.txt"
 
 adjectivals = {
     "solar": "sun",
