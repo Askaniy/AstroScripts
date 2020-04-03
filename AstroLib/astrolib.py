@@ -1,5 +1,5 @@
 
-# AstroLib, version of March 26, 2020
+# AstroLib, version of April 3, 2020
 
 
 from scipy import pi, sin, cos, arcsin, arccos, sqrt
@@ -22,19 +22,21 @@ token_path = ".../discord_bot_token.txt"
 supported_requests = {
     "help": "You really need help to request help?", 
     "create": """This module allows you to create your own object that can be processed as object from database. Input example:
-    create Russell's Teapot, teapot
+    `create Russell's Teapot, teapot
     radius = 10 cm
-    mass = 1 kg""", 
+    mass = 1 kg`""", 
     "return": """This module searches for the object in the available databases and return data without any processing or formalizing. Input example:
     return Jupiter X""", 
     "search": """This module searches for the object in the available databases and return formalized data. Input example:
-    search Jupiter X""",
+    `search Jupiter X`""",
     "find": """This module searches for parameter of specified celestial body in the available databases. 
 Specify the parameter before “of” and the celestial body after, or first a planet, and then a parameter, if each consists of one word. 
-If you need an epoch, write after “on”.""",
-    "generate": """This module generates an encoding in the specified format. 
-Specify the format before “for” and the celestial body after.
-If you need an epoch, write after “on”. Formats supported: SSC."""}
+If you need an epoch, write after “on”. Input examples:
+    `find surfase area of Jupiter X in m2`
+    `find Jovian density in cgs`""",
+    "generate": """This module generates an encoding in the specified format. Specify the format before “for” and the celestial body after.
+If you need an epoch, write after “on”. Input example:
+    `generate SSC for Jupiter X`"""}
 
 formats = ["ssc", "json", "decor"]
 
@@ -138,13 +140,19 @@ prmtr = {
         "formulas": [(["long equatorial radius", "short equatorial radius", "mean polar radius"], surface)]},
     "volume": {
         "alt_names": set(["volume"]),
-        "formulas": [(["long equatorial radius", "short equatorial radius", "mean polar radius"], lambda a, b, c: 4*pi * a*b*c /3)]},
+        "formulas": [
+            (["long equatorial radius", "short equatorial radius", "mean polar radius"], lambda a, b, c: 4*pi * a*b*c /3),
+            (["mass", "mean density"], lambda m, d: m / d)
+            ]},
     "mean density": {
         "alt_names": set(["density", "mean density"]),
         "formulas": [(["mass", "volume"], lambda m, v: m / v)]},
     "mass": {
         "alt_names": set(["mass"]),
-        "formulas": [(["standard gravitational parameter"], lambda gm: gm / c.G)]},
+        "formulas": [
+            (["standard gravitational parameter"], lambda gm: gm / c.G),
+            (["volume", "mean density"], lambda v, d: v * d)
+            ]},
     "standard gravitational parameter": {
         "alt_names": set(["mass parameter", "gravitational parameter", "standard gravitational parameter"]),
         "formulas": [(["mass"], lambda m: c.G * m)]},
@@ -321,10 +329,10 @@ def read_request(request):
         meaning.update({"to_do": "create", "body": " ".join(request[1:])})
         return meaning
     elif request[0] == "return":
-        meaning.update({"to_do": "return", "body": " ".join(request[1:])})
+        meaning.update({"to_do": "return", "body": " ".join(list(map(noun, request[1:])))})
         return meaning
     elif request[0] == "search":
-        meaning.update({"to_do": "search", "body": " ".join(request[1:])})
+        meaning.update({"to_do": "search", "body": " ".join(list(map(noun, request[1:])))})
         return meaning
     elif request[0] == "find":
         request.remove("find")
@@ -385,37 +393,59 @@ def find_body(request, path):
     files.reverse()
     for fl in files:
         with codecs.open(fl) as f:
+            f_list = list(f)
+            f_list.extend(["\n", "Endgame"])
             obj_level = 0
-            parents = []
+            part_of = []
             last_parameter = ""
-            flag = False
-            read_flag = False
-            for line in f:
-                if read_flag:
-                    if line.isspace():
-                        body.update({"parent": parents[:obj_level]})
-                        #print("- result of find_body: " + str(body))
-                        return body
+            check_system_flag = False
+            system = False
+            read_obj_name = True
+            read_obj_prmt = False
+            for line in f_list:
+                if not system:
+                    if not read_obj_prmt:
+                        if read_obj_name and not line.isspace():
+                            obj_level = line.count("\t")
+                            names = line.strip().split(", ")
+                            noun_version = list(map(lambda i: " ".join(list(map(lambda j: noun(j.lower()), i.split(" ")))), names))
+                            if request in noun_version:
+                                read_obj_prmt = True
+                                body["name"] = names
+                            else:
+                                part_of.insert(obj_level, names[0])
+                        read_obj_name = False
+                        if line.isspace():
+                            read_obj_name = True
                     else:
-                        parameter = line.strip().split(" = ")
-                        if line.count("\t") == obj_level:
-                            body[parameter[0]] = {"value": quantity(parameter[1])}
-                            last_parameter = parameter[0]
-                        else:
-                            body[last_parameter].update({parameter[0]: parameter[1]})
+                        if check_system_flag:
+                            if line.count("\t") > obj_level:
+                                system = True
+                                includes = [line.strip()]
+                            else:
+                                return body
+                        else: 
+                            if line.isspace():
+                                body.update({"part of": part_of[:obj_level]})
+                                check_system_flag = True
+                            else:
+                                parameter = line.strip().split(" = ")
+                                if line.count("\t") == obj_level:
+                                    body[parameter[0]] = {"value": quantity(parameter[1])}
+                                    last_parameter = parameter[0]
+                                else:
+                                    body[last_parameter].update({parameter[0]: parameter[1]})
                 else:
-                    if flag:
-                        obj_level = line.count("\t")
-                        names = line.strip().split(", ")
-                        noun_version = list(map(lambda i: " ".join(list(map(lambda j: noun(j.lower()), i.split(" ")))), names))
-                        if request in noun_version:
-                            read_flag = True
-                            body["name"] = names
-                        else:
-                            parents.insert(obj_level, names[0])
-                    flag = False
+                    if read_obj_name:
+                        if line.count("\t") == obj_level + 1:
+                            includes.append(line.strip())
+                        elif line.count("\t") <= obj_level:
+                            body.update({"includes": includes})
+                            return body
+                    read_obj_name = False
                     if line.isspace():
-                        flag = True
+                        read_obj_name = True
+
 
 calculating = []
 cannot_calc = []
@@ -492,13 +522,23 @@ def process(name, body):
         print("- result of process (if was found): " + str(body[cross]))
         return body[cross]
 
+def find_class(body):
+    if "includes" in body:
+        return "barycenter"
+    else:
+        return "work in progress"
+
 def find_parameter(request, body):
-    print("- request to find_parameter: " + request)
-    if request in ["parent", "parents"]:
-        return {"database name": "parent", "value": "/".join(body["parent"])}
-    for name in prmtr:
-        if request in prmtr[name]["alt_names"]:
-            return process(name, body)
+    if request in ["part of", "parent", "parents"]:
+        return {"database name": "parents", "value": ", ".join(body["part of"])}
+    elif request in ["system", "include", "includes"]:
+        return {"database name": "system", "value": ", ".join(body["includes"])}
+    elif request == "class":
+        return find_class(body)
+    else:
+        for name in prmtr:
+            if request in prmtr[name]["alt_names"]:
+                return process(name, body)
 
 
 # Second layer of the script:
@@ -553,8 +593,14 @@ def hlp(request):
 def create(body):
     file_name = time.strftime("%Y-%m-%d_%H-%M-%S")
     with codecs.open("{}/{}.txt".format(path, file_name), "w") as f:
-        f.write("\n" + body + "\n ")
-    return "I saved your object successfully, you can work with it"                                        #CHECK
+        f.write(body)
+    body_name = body.split("\n")[0]
+    print(body_name.split(", ")[0])
+    try:
+        print(find_body(body_name.split(", ")[0], path))
+        return "I saved your object successfully, you can work with it"
+    except Exception:
+        return "Some error in your syntax, I can't read it"
 
 def output(parameter):
     try:
@@ -580,13 +626,26 @@ def output(parameter):
             anwser += " ({})".format(parameter["comment"])
     return anwser
 
+def short_list(system):
+    res = []
+    for i in system:
+        res.append(i.split(", ")[0])
+    if len(res) >= 20:
+        res = res[:19]
+        res.append("...")
+    return res
+
 def embed(body):
     global em
     em = discord.Embed(
         title = ", ".join(body["name"]),
-        description = ", ".join(body["parent"]),
+        description = "class: " + find_class(body),
         color = discord.Colour.from_rgb(127, 255, 127)
         )
+    if body["part of"] != []:
+        em.add_field(name = "part of: ", value = ", ".join(body["part of"]), inline = False)
+    if "includes" in body:
+        em.add_field(name = "includes: ", value = ", ".join(short_list(body["includes"])), inline = False)
     for i in body:
         if type(body[i]) != list:
             em.add_field(name = i, value = output(body[i]), inline = False)
@@ -624,7 +683,7 @@ def find(request, body):
 
 def generate(request, body):
     if request == "ssc":
-        code = '"{}" "{}"\n'.format(":".join(body["name"]), "/".join(body["parent"])) + "{"
+        code = '"{}" "{}"\n'.format(":".join(body["name"]), "/".join(body["part of"])) + "{"
         code += "\n\t"
         return code
     elif request == "json":
@@ -635,7 +694,11 @@ def generate(request, body):
                 pass
         return json.dumps(body)
     else:
-        decor = "\n{}\n{}\n".format(", ".join(body["name"]), ", ".join(body["parent"]))
+        decor = "\n{}\n{}\n".format(", ".join(body["name"]), "class: " + find_class(body))
+        if body["part of"] != []:
+            decor += "\npart of:\n{}\n".format(", ".join(body["part of"]))
+        if "includes" in body:
+            decor += "\nincludes:\n{}\n".format(", ".join(short_list(body["includes"])))
         for key, value in body.items():
             if type(value) != list:
                 decor += ("\n{}\n{}\n".format(key, output(value)))
