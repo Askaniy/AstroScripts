@@ -2,9 +2,9 @@ from PIL import Image, ImageDraw
 from math import ceil, floor, pi, cos, atan, tan
 from scipy.interpolate import interp1d
 
-obl = 0.06487  # of Jupiter
-open_path = ".../Reprojection/Jupiter test/jupiter-for-test.png"
-save_path = ".../Reprojection/Jupiter test/script-result.png"
+obl = 0.06487  # of Jupiter, to change
+open_path = "_/Reprojection/Jupiter test/jupiter-for-test.png" # to change
+save_path = "_/Reprojection/Jupiter test/script-result.png"    # to change
 mode = "pl-centric_pl-graphic" # "pl-graphic_pl-centric" "lambert_pl-centric"
 
 img_old = Image.open(open_path)

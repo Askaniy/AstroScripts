@@ -1,18 +1,19 @@
 from PIL import Image, ImageDraw
 
+save_path = "_/"                  # to change
+save_name = "coordinate-grid-map" # to change
+save_type = "png"
+
+
 def check(d, h, x, y):
     k = h / d
     if x % k == 0 or y % k == 0 or x % k == k - 1 or y % k == k - 1:
         return True
 
-name = "coord_grid_map"
-path = "_"
-form = "_"
-
-q = int(input("The quality of the final map (from 1 to 100): "))
+q = int(input("Quality of the result (from 1 to 100): "))
 if q < 1 or q > 100:
     q = 50
-    print ("Error. The value is set to 50.")
+    print ("The limit is exceeded. The value is set to 50.")
 h = 18 * q
 w = 36 * q
 
@@ -36,4 +37,4 @@ for x in range(w):
         draw.point((x, y), (255, g, b, a))
 
 print("Done!")
-img.save(path + "/" + name + "-script_result-q_" + str(q) + "." + form)
+img.save(save_path + save_name + "_quality-" + str(q) + "." + save_type)
