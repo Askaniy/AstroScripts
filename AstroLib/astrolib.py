@@ -1,5 +1,5 @@
 
-# AstroLib, version of April 3, 2020
+# AstroLib, version of June 28, 2020
 
 
 from scipy import pi, sin, cos, arcsin, arccos, sqrt
@@ -15,8 +15,9 @@ import json
 
 
 bot = False
-path = ".../Database"
-token_path = ".../discord_bot_token.txt"
+database_path = ".../Databases"          # to change
+#discord_path = ".../Discord data"       # to change
+token_path = ".../discord_bot_token.txt" # to change
 
 
 supported_requests = {
@@ -385,66 +386,109 @@ def quantity(request):
     else:
         return value * unit(" ".join(spl[1:]))
 
-def find_body(request, path):
+def prmt_reader(line):
+    if ":" in line:
+        parameter = line.split(":")
+        name = parameter[0].strip()
+        value = parameter[1].strip()
+    elif "=" in line:
+        parameter = line.split("=")
+        name = parameter[0].strip()
+        value = quantity(parameter[1].strip())
+    else:
+        name = line.strip()
+        value = "use `:` for text and `=` for quantity"
+    return {"name": name, "value": value}
+
+def find_body(request, database_path):
     global cannot_calc
     cannot_calc = []
     body = {}
-    files = [f.path for f in os.scandir(path) if f.is_file()]
+    files = [f.path for f in os.scandir(database_path) if f.is_file()]
+    files.extend([f.path for f in os.scandir(discord_path) if f.is_file()])
     files.reverse()
+    print(files)
     for fl in files:
-        with codecs.open(fl) as f:
-            f_list = list(f)
-            f_list.extend(["\n", "Endgame"])
-            obj_level = 0
-            part_of = []
-            last_parameter = ""
-            check_system_flag = False
-            system = False
-            read_obj_name = True
-            read_obj_prmt = False
-            for line in f_list:
-                if not system:
-                    if not read_obj_prmt:
-                        if read_obj_name and not line.isspace():
-                            obj_level = line.count("\t")
-                            names = line.strip().split(", ")
-                            noun_version = list(map(lambda i: " ".join(list(map(lambda j: noun(j.lower()), i.split(" ")))), names))
-                            if request in noun_version:
-                                read_obj_prmt = True
-                                body["name"] = names
-                            else:
-                                part_of.insert(obj_level, names[0])
+        if os.path.splitext(fl)[1] == ".askaniy":
+            with codecs.open(fl) as f:
+                f_list = list(f)
+                f_list.extend(["\n", "Endgame"])
+                obj_level = 0
+                part_of = []
+                last_parameter = ""
+                check_system_flag = False
+                system = False
+                read_obj_name = True
+                read_obj_prmt = False
+                read_group = False
+                read_head = False
+                head = {}
+                for line in f_list:
+                    if not system:
+                        if not read_obj_prmt:
+                            if read_obj_name and not line.isspace():
+                                obj_level = line.count("\t")
+                                names = line.strip().split(", ")
+                                noun_version = list(map(lambda i: " ".join(list(map(lambda j: noun(j.lower()), i.split(" ")))), names))
+                                if request in noun_version:
+                                    read_obj_prmt = True
+                                    body["name"] = names
+                                else:
+                                    part_of.insert(obj_level, names[0])
+                            read_obj_name = False
+                            if line.isspace():
+                                read_obj_name = True
+                        else:
+                            if check_system_flag:
+                                if not line.isspace():
+                                    if line.count("\t") > obj_level:
+                                        system = True
+                                        includes = [line.strip()]
+                                    else:
+                                        return body
+                            else: 
+                                if line.isspace():
+                                    body.update({"part of": part_of[:obj_level]})
+                                    check_system_flag = True
+                                else:
+                                    # Parameters reading
+                                    if not read_group:
+                                        if "<" in line:
+                                            read_group = True
+                                            read_head = True
+                                            head.update(prmt_reader(line.replace("<", "")))
+                                        else:
+                                            parameter = prmt_reader(line) # < parameter reading block
+                                            if line.count("\t") == obj_level:
+                                                body[parameter["name"]] = {"value": parameter["value"]}
+                                                last_parameter = parameter["name"]
+                                            else:
+                                                body[last_parameter].update({parameter["name"]: parameter["value"]}) # >
+                                    else:
+                                        if read_head and line.count("\t") == obj_level + 1:
+                                            head.update(prmt_reader(line))
+                                        else:
+                                            read_head = False
+                                            if ">" in line:
+                                                read_group = False
+                                                line = line.replace(">", "")
+                                            parameter = prmt_reader(line) # < parameter reading block
+                                            if line.count("\t") == obj_level:
+                                                body[parameter["name"]] = {"value": parameter["value"]}
+                                                body[parameter["name"]].update({head["name"]: head["value"]})
+                                                last_parameter = parameter["name"]
+                                            else:
+                                                body[last_parameter].update({parameter["name"]: parameter["value"]}) # >
+                    else:
+                        if read_obj_name:
+                            if line.count("\t") == obj_level + 1:
+                                includes.append(line.strip())
+                            elif line.count("\t") <= obj_level:
+                                body.update({"includes": includes})
+                                return body
                         read_obj_name = False
                         if line.isspace():
                             read_obj_name = True
-                    else:
-                        if check_system_flag:
-                            if line.count("\t") > obj_level:
-                                system = True
-                                includes = [line.strip()]
-                            else:
-                                return body
-                        else: 
-                            if line.isspace():
-                                body.update({"part of": part_of[:obj_level]})
-                                check_system_flag = True
-                            else:
-                                parameter = line.strip().split(" = ")
-                                if line.count("\t") == obj_level:
-                                    body[parameter[0]] = {"value": quantity(parameter[1])}
-                                    last_parameter = parameter[0]
-                                else:
-                                    body[last_parameter].update({parameter[0]: parameter[1]})
-                else:
-                    if read_obj_name:
-                        if line.count("\t") == obj_level + 1:
-                            includes.append(line.strip())
-                        elif line.count("\t") <= obj_level:
-                            body.update({"includes": includes})
-                            return body
-                    read_obj_name = False
-                    if line.isspace():
-                        read_obj_name = True
 
 
 calculating = []
@@ -467,28 +511,22 @@ def calculate(name, body):
             print("- need_parameter_values: " + str(need_parameter_values))
             if need_parameter_values != [] and None not in need_parameter_values:
                 to_formula_value = []
-                result = {"database name": name, "comment": ["*calculated*"], "source": []}
+                result = {"database name": name, "comment": "*calculated*"}
                 for need_parameter_value in need_parameter_values:
-                    try:
-                        if body[need_parameter_value["database name"]]["source"] not in result["source"]:
-                            if type(body[need_parameter_value["database name"]]["source"]) == list:
-                                result["source"].extend(body[need_parameter_value["database name"]]["source"])
+                    for component in body[need_parameter_value["database name"]]:
+                        if component not in ["value", "error", "database name"]:
+                            if component in result:
+                                if type(result[component]) != list:
+                                    result[component] = [result[component]]
+                                if type(body[need_parameter_value["database name"]][component]) != list:
+                                    result[component].append(body[need_parameter_value["database name"]][component])
+                                else:
+                                    result[component].extend(body[need_parameter_value["database name"]][component])
+                                result.update({component: list(set(result[component]))})
                             else:
-                                result["source"].append(body[need_parameter_value["database name"]]["source"])
-                    except KeyError:
-                        pass
-                    try:
-                        if body[need_parameter_value["database name"]]["comment"] not in result["comment"]:
-                            if type(body[need_parameter_value["database name"]]["comment"]) == list:
-                                result["comment"].extend(body[need_parameter_value["database name"]]["comment"][1:])
-                            else:
-                                result["comment"].append(body[need_parameter_value["database name"]]["comment"])
-                    except KeyError:
-                        pass
+                                result.update({component: body[need_parameter_value["database name"]][component]})
                     value = body[need_parameter_value["database name"]]["value"]
                     to_formula_value.append(value)
-                if result["source"] == []:
-                    result.pop("source")
                 try:
                     print("- to_formula_value: " + str(to_formula_value))
                     result.update({"value": formula[1](*to_formula_value).decompose()})
@@ -592,12 +630,12 @@ def hlp(request):
 
 def create(body):
     file_name = time.strftime("%Y-%m-%d_%H-%M-%S")
-    with codecs.open("{}/{}.txt".format(path, file_name), "w") as f:
+    with codecs.open("{}/{}.askaniy".format(discord_path, file_name), "w") as f:
         f.write(body)
     body_name = body.split("\n")[0]
     print(body_name.split(", ")[0])
     try:
-        print(find_body(body_name.split(", ")[0], path))
+        print(find_body(body_name.split(", ")[0], database_path))
         return "I saved your object successfully, you can work with it"
     except Exception:
         return "Some error in your syntax, I can't read it"
@@ -708,6 +746,7 @@ def generate(request, body):
 # First layer of the script:
 
 def anwser(request):
+    print(request)
     global em
     em = None
     if request:
@@ -715,7 +754,7 @@ def anwser(request):
             return hlp(request["meta"])
         elif request["to_do"] == "create":
             return create(request["body"])
-        body = find_body(request["body"], path)
+        body = find_body(request["body"], database_path)
         if body == None:
             return "I can't find {} in the available databases".format(request["body"])
         elif request["to_do"] == "return":
