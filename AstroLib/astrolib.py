@@ -1,11 +1,10 @@
 
-# AstroLib, version of June 28, 2020
+# AstroLib, version of June 30, 2020
 
 
 from scipy import pi, sin, cos, arcsin, arccos, sqrt
 import astropy.constants as c
 import astropy.units as u
-import codecs
 import time
 import re
 import os
@@ -405,12 +404,11 @@ def find_body(request, database_path):
     cannot_calc = []
     body = {}
     files = [f.path for f in os.scandir(database_path) if f.is_file()]
-    files.extend([f.path for f in os.scandir(discord_path) if f.is_file()])
+    #files.extend([f.path for f in os.scandir(discord_path) if f.is_file()])
     files.reverse()
-    print(files)
     for fl in files:
         if os.path.splitext(fl)[1] == ".askaniy":
-            with codecs.open(fl) as f:
+            with open(fl, errors="ignore") as f:
                 f_list = list(f)
                 f_list.extend(["\n", "Endgame"])
                 obj_level = 0
@@ -489,7 +487,67 @@ def find_body(request, database_path):
                         read_obj_name = False
                         if line.isspace():
                             read_obj_name = True
-
+        
+        elif os.path.splitext(fl)[1] == ".ttarrants":
+            with open(fl, errors="ignore") as f:
+                f_list = list(f)
+                f_list.extend(["\nSystem:Endgame"])
+                part_of = []
+                includes = []
+                aliases = [] # system names
+                names = [] # object names
+                collecting_subsystem = False
+                lastnotspace = False
+                system = False
+                for line in f_list:
+                    if line.isspace():
+                        if lastnotspace:
+                            if system:
+                                if request in [aliase.lower() for aliase in aliases]:
+                                    body.update({"name": aliases})
+                                    collecting_subsystem = True
+                                system = False
+                            else:
+                                includes.append(names[0])
+                                if request in [name.lower() for name in names]:
+                                    return body
+                            lastnotspace = False
+                    else:
+                        dedoted = line.strip().split(":")
+                        if dedoted[0].lower() == "system":
+                            if not collecting_subsystem:
+                                body = {}
+                                system = True
+                                aliases = [dedoted[1]]
+                                part_of = []
+                                includes = []
+                            else:
+                                collecting_subsystem = False
+                                body.update({"part of": [], "includes": includes})
+                                return body
+                        elif dedoted[0].lower() == "aliases":
+                            aliases.extend(dedoted[1].split(","))
+                        elif dedoted[0].lower() in ["star", "planet", "moon"]:
+                            i = " " + " ".join(dedoted[2:]) # with star name variant
+                            names = [aliase + i for aliase in aliases]
+                            if len(dedoted) > 3:
+                                j = " " + " ".join(dedoted[3:]) # w/o star name variant
+                                names.extend([aliase + j for aliase in aliases])
+                            if len(dedoted) > 4:
+                                part_of = [dedoted[1] + " system", dedoted[1] + " " + dedoted[-2] + " system"]
+                            else:
+                                part_of = [dedoted[1] + " system"]
+                            if not collecting_subsystem:
+                                body = {"name": names, "part of": part_of}
+                        elif dedoted[0].lower() in ["reference", "published"]:
+                            body.update({dedoted[0].lower(): {"value": line.strip().split(":", 1)[1]}})
+                        else:
+                            if not collecting_subsystem:
+                                if len(dedoted) == 2:
+                                    body.update({dedoted[0].lower(): {"value": dedoted[1]}})
+                                else:
+                                    body.update({dedoted[0].lower(): {"value": dedoted[1], "comment": dedoted[2:]}})
+                        lastnotspace = True
 
 calculating = []
 cannot_calc = []
