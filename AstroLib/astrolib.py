@@ -1,8 +1,8 @@
 
-# AstroLib, version of June 30, 2020
+# AstroLib, version of July 4, 2020
 
 
-from scipy import pi, sin, cos, arcsin, arccos, sqrt
+from scipy import pi, sin, cos, arcsin, arccos, sqrt, log10
 import astropy.constants as c
 import astropy.units as u
 import time
@@ -11,6 +11,8 @@ import os
 import sys
 import discord
 import json
+from astropy.units import cds
+#cds.enable()
 
 
 bot = False
@@ -38,7 +40,7 @@ If you need an epoch, write after “on”. Input examples:
 If you need an epoch, write after “on”. Input example:
     `generate SSC for Jupiter X`"""}
 
-formats = ["ssc", "json", "decor"]
+formats = ["askaniy", "ttarrants", "ssc", "json", "decor"]
 
 links = {
     "WGCCRE2015": "https://astropedia.astrogeology.usgs.gov/download/Docs/WGCCRE/WGCCRE2015reprint.pdf",
@@ -153,6 +155,9 @@ prmtr = {
             (["standard gravitational parameter"], lambda gm: gm / c.G),
             (["volume", "mean density"], lambda v, d: v * d)
             ]},
+    "minimum mass": {
+        "alt_names": set(["minimum mass", "m*sin(i)", "msini"])},
+    #    "formulas": [([ , ], lambda  , )]},
     "standard gravitational parameter": {
         "alt_names": set(["mass parameter", "gravitational parameter", "standard gravitational parameter"]),
         "formulas": [(["mass"], lambda m: c.G * m)]},
@@ -175,7 +180,7 @@ prmtr = {
         "alt_names": set(["meridian angle", "prime meridian angle"])},
     #    "formulas": [([ , ], lambda  , )]},
     "rotation period": {
-        "alt_names": set(["rotation period"])},
+        "alt_names": set(["rotation period", "p_rot", "prot"])},
     #    "formulas": [([ , ], lambda  , )]},
     "spin–orbit resonance": {
         "alt_names": set(["spin–orbit resonance", "tidal locking", "gravitational locking", "spin-orbit locking"])},
@@ -185,7 +190,7 @@ prmtr = {
         "horizons": "P"},
     #    "formulas": [([ , ], lambda  , )]},
     "semimajor axis": {
-        "alt_names": set(["semimajor axis"]),
+        "alt_names": set(["semimajor axis", "semiaxis"]),
         "horizons": "a"},
     #    "formulas": [([ , ], lambda  , )]},
     "eccentricity": {
@@ -193,17 +198,38 @@ prmtr = {
         "horizons": "e"},
     #    "formulas": [([ , ], lambda  , )]},
     "inclination": {
-        "alt_names": set(["inclination"]),
+        "alt_names": set(["inclination", "incl", "inc"]),
         "horizons": "incl"},
     #    "formulas": [([ , ], lambda  , )]},
     "longitude of ascending node": {
-        "alt_names": set(["longitude of ascending node"])},
+        "alt_names": set(["longitude of ascending node", "ascendingnode", "node"])},
+    #    "formulas": [([ , ], lambda  , )]},
+    "longitude of periapsis": {
+        "alt_names": set(["longitude of periapsis", "longitude of pericenter", "longperi"])},
     #    "formulas": [([ , ], lambda  , )]},
     "argument of periapsis": {
         "alt_names": set(["argument of periapsis", "argument of pericenter"])},
     #    "formulas": [([ , ], lambda  , )]},
     "mean anomaly": {
-        "alt_names": set(["mean anomaly"])},
+        "alt_names": set(["mean anomaly", "meananomaly"])},
+    #    "formulas": [([ , ], lambda  , )]},
+    "temperature": {
+        "alt_names": set(["temperature", "temp"])},
+    #    "formulas": [([ , ], lambda  , )]},
+    "luminosity": {
+        "alt_names": set(["luminosity", "lum"])},
+    #    "formulas": [([ , ], lambda  , )]},
+    "metallicity": {
+        "alt_names": set(["metallicity", "metal" "[fe/h]", "fe/h"])},
+    #    "formulas": [([ , ], lambda  , )]},
+    "minimum velocity": {
+        "alt_names": set(["minimum velocity", "v*sin(i)", "vsini"])},
+    #    "formulas": [([ , ], lambda  , )]},
+    "distance": {
+        "alt_names": set(["distance"])},
+    #    "formulas": [([ , ], lambda  , )]},
+    "parallax": {
+        "alt_names": set(["parallax"])}
     #    "formulas": [([ , ], lambda  , )]},
 }
 
@@ -274,6 +300,20 @@ def noun(name):
     return name
 
 units = {
+    "sun mass": u.Msun,
+    "msun": u.Msun,
+    "ms": u.Msun,
+    "jupiter mass": u.Mjup,
+    "mj": u.Mjup,
+    "earth mass": u.Mearth,
+    "me": u.Mearth,
+    "sun radius": u.Rsun,
+    "rs": u.Rsun,
+    "jupiter radius": u.Rjup,
+    "rj": u.Rjup,
+    "earth radius": u.Rearth,
+    "re": u.Rearth,
+    "sec": u.s,
     "seconds": u.s,
     "minutes": u.min,
     "hours": u.h,
@@ -290,12 +330,7 @@ units = {
     "tonnes": u.t,
     "astronomical units": u.AU,
     "light years": u.lyr,
-    "sun radius": u.solRad,
-    "jupiter radius": u.jupiterRad,
-    "earth radius": u.earthRad,
-    "sun mass": u.solMass,
-    "jupiter mass": u.jupiterMass,
-    "earth mass": u.earthMass
+    "ppm": cds.ppm
 }
 
 def unit(name):
@@ -374,26 +409,108 @@ def read_request(request):
             meaning.update({"body": " ".join(request[:-1]), "format": request[-1]})
         if meaning["format"] in formats:
             return meaning
-    #print("- result of read_request: " + str(meaning))
 
-def quantity(request):
-    spl = request.split(" ")
-    try:
-        value = float(spl[0])
-    except ValueError:
-        return request
-    else:
-        return value * unit(" ".join(spl[1:]))
+def tt_class(tt_type):
+    if tt_type == "system":
+        return ["barycenter"]
+    elif tt_type == "star":
+        return ["celestial object", "stellar object", "star"]
+    elif tt_type == "planet":
+        return ["celestial object", "planemo", "exoplanet"]
+    elif tt_type == "moon":
+        return ["celestial object", "planemo", "exoplanet"]
+    elif tt_type == "asteroid":
+        return ["celestial object", "planemo", "exoplanet"]
+    elif tt_type == "disk":
+        return ["celestial object", "disk"]
+
+def tt_unit(prmt, clss):
+    if prmt in ["temp", "t_eql"]:
+        return u.K
+    elif prmt in ["vsini", "k_rv"]:
+        return u.km / u.s
+    elif prmt in ["semiaxis", "separation"]:
+        return u.AU
+    elif prmt in ["rotinc", "inc", "longperi", "meananomaly", "ascendingnode", "node"]:
+        return u.deg
+    elif prmt in ["period", "transit_dur"]:
+        return u.d
+    elif prmt in ["parallax", "k_astrometry"]:
+        return u.mas
+    elif prmt.endswith("mag"):
+        return u.mag
+    elif prmt == "distance":
+        return u.pc
+    elif prmt == "age":
+        return u.yr * 10E9
+    elif prmt == "lum":
+        return u.Lsun
+    elif prmt == "b":
+        return u.Rsun
+    elif prmt == "logg":
+        return u.cm / u.s**2 #log10(u.cm / u.s**2)
+    elif prmt == "msini":
+        return u.Mjup
+    if clss == "star":
+        if prmt == "mass":
+            return u.Msun
+        elif prmt == "radius":
+            return u.Rsun
+        elif prmt == "p_rot":
+            return u.d
+    elif clss == "exoplanet":
+        if prmt == "mass":
+            return u.Mjup
+        elif prmt == "radius":
+            return u.Rjup
+        elif prmt == "p_rot":
+            return u.h
+    return u.dimensionless_unscaled
 
 def prmt_reader(line):
     if ":" in line:
         parameter = line.split(":")
-        name = parameter[0].strip()
-        value = parameter[1].strip()
+        return {"name": parameter[0].strip(), "value": parameter[1].strip()}
     elif "=" in line:
         parameter = line.split("=")
         name = parameter[0].strip()
-        value = quantity(parameter[1].strip())
+        value = parameter[1].strip()
+        try:
+            value_list = value.split(" ")
+            q = unit(value_list[-1])
+            value = "".join(value_list[:-1])
+            if "±" in value:
+                value_list = value.split("±")
+                if value_list[0][-1].isalpha:
+                    value_list[0] = value_list[0][:-1]
+                value = float(value_list[0].strip())
+                error = float(value_list[1].strip())
+                return {"name": name, "value": value * q, "error": error * q}
+            elif "+" in value and value[0] != "+":
+                value_list = value.split("+")
+                value = float(value_list[0])
+                error = value_list[1].split("-")
+                if len(error) == 2:
+                    plus = float(error[0])
+                    minus = float(error[1])
+                elif len(error) == 4:
+                    plus = float(error[0] + "-"+error[1])
+                    minus = float(error[2] + "-"+error[3])
+                return {"name": name, "value": value * q, "error": (plus * q, minus * q)}
+            elif "-" in value and value[0] != "-":
+                value_list = value.split("-")
+                min_v = float(value_list[0])
+                max_v = float(value_list[1])
+                value = (min_v + max_v) / 2
+                error = (max_v - min_v) / 2
+                return {"name": name, "value": value * q, "error": error * q}
+            elif value[-1] == "%":
+                value = float(value.replace("%", "").strip())
+                return {"name": name, "value": value / 100}
+            else:
+                return {"name": name, "value": float(value) * q}
+        except IndexError:
+            return {"name": name, "value": float(value)}
     else:
         name = line.strip()
         value = "use `:` for text and `=` for quantity"
@@ -420,7 +537,7 @@ def find_body(request, database_path):
                 read_obj_prmt = False
                 read_group = False
                 read_head = False
-                head = {}
+                head = []
                 for line in f_list:
                     if not system:
                         if not read_obj_prmt:
@@ -430,7 +547,7 @@ def find_body(request, database_path):
                                 noun_version = list(map(lambda i: " ".join(list(map(lambda j: noun(j.lower()), i.split(" ")))), names))
                                 if request in noun_version:
                                     read_obj_prmt = True
-                                    body["name"] = names
+                                    body["names"] = names
                                 else:
                                     part_of.insert(obj_level, names[0])
                             read_obj_name = False
@@ -451,20 +568,23 @@ def find_body(request, database_path):
                                 else:
                                     # Parameters reading
                                     if not read_group:
+                                        head = []
                                         if "<" in line:
                                             read_group = True
                                             read_head = True
-                                            head.update(prmt_reader(line.replace("<", "")))
+                                            head.append(prmt_reader(line.replace("<", "")))
                                         else:
                                             parameter = prmt_reader(line) # < parameter reading block
                                             if line.count("\t") == obj_level:
                                                 body[parameter["name"]] = {"value": parameter["value"]}
+                                                if "error" in parameter:
+                                                    body[parameter["name"]].update({"error": parameter["error"]})
                                                 last_parameter = parameter["name"]
                                             else:
                                                 body[last_parameter].update({parameter["name"]: parameter["value"]}) # >
                                     else:
                                         if read_head and line.count("\t") == obj_level + 1:
-                                            head.update(prmt_reader(line))
+                                            head.append(prmt_reader(line))
                                         else:
                                             read_head = False
                                             if ">" in line:
@@ -473,7 +593,10 @@ def find_body(request, database_path):
                                             parameter = prmt_reader(line) # < parameter reading block
                                             if line.count("\t") == obj_level:
                                                 body[parameter["name"]] = {"value": parameter["value"]}
-                                                body[parameter["name"]].update({head["name"]: head["value"]})
+                                                if "error" in parameter:
+                                                    body[parameter["name"]].update({"error": parameter["error"]})
+                                                for h in range(len(head)):
+                                                    body[parameter["name"]].update({head[h]["name"]: head[h]["value"]})
                                                 last_parameter = parameter["name"]
                                             else:
                                                 body[last_parameter].update({parameter["name"]: parameter["value"]}) # >
@@ -504,7 +627,7 @@ def find_body(request, database_path):
                         if lastnotspace:
                             if system:
                                 if request in [aliase.lower() for aliase in aliases]:
-                                    body.update({"name": aliases})
+                                    body.update({"names": aliases})
                                     collecting_subsystem = True
                                 system = False
                             else:
@@ -516,7 +639,7 @@ def find_body(request, database_path):
                         dedoted = line.strip().split(":")
                         if dedoted[0].lower() == "system":
                             if not collecting_subsystem:
-                                body = {}
+                                body = {"class": tt_class("system")}
                                 system = True
                                 aliases = [dedoted[1]]
                                 part_of = []
@@ -527,7 +650,11 @@ def find_body(request, database_path):
                                 return body
                         elif dedoted[0].lower() == "aliases":
                             aliases.extend(dedoted[1].split(","))
-                        elif dedoted[0].lower() in ["star", "planet", "moon"]:
+                        elif dedoted[0].lower() in ["star", "planet", "moon", "asteroid", "disk"]:
+                            confirmed = True
+                            if dedoted[-1][-1] == "?":
+                                confirmed = False
+                                dedoted[-1] = dedoted[-1].replace("?", "")
                             i = " " + " ".join(dedoted[2:]) # with star name variant
                             names = [aliase + i for aliase in aliases]
                             if len(dedoted) > 3:
@@ -538,15 +665,91 @@ def find_body(request, database_path):
                             else:
                                 part_of = [dedoted[1] + " system"]
                             if not collecting_subsystem:
-                                body = {"name": names, "part of": part_of}
+                                body = {"names": names, "part of": part_of, "class": tt_class(dedoted[0].lower())}
+                                if not confirmed:
+                                    body["class"].append("not confirmed")
+                        elif dedoted[0].lower() == "altname":
+                            i = " " + " ".join(dedoted[2:])
+                            names = [aliase + i for aliase in aliases]
+                            if not collecting_subsystem:
+                                body["names"].extend(names)
+                        elif dedoted[0].lower() == "type":
+                            if not collecting_subsystem:
+                                body["class"].extend(dedoted[1].lower())
                         elif dedoted[0].lower() in ["reference", "published"]:
-                            body.update({dedoted[0].lower(): {"value": line.strip().split(":", 1)[1]}})
-                        else:
+                            if not collecting_subsystem:
+                                body.update({dedoted[0].lower(): {"value": line.strip().split(":", 1)[1]}})
+                        elif dedoted[0].lower() in [
+                            "note", "association", "field", "paper", "announce", "announced", "announcement", 
+                            "update", "discovery", "discoverer", "discoverers", "dmethod", "detectionmethods", 
+                            "confirm", "resonance", "circumbinary", "epoch", "t_peri", "ra", "dec", "spectral", "atmosphere"]:
                             if not collecting_subsystem:
                                 if len(dedoted) == 2:
                                     body.update({dedoted[0].lower(): {"value": dedoted[1]}})
                                 else:
                                     body.update({dedoted[0].lower(): {"value": dedoted[1], "comment": dedoted[2:]}})
+                        else:
+                            if not collecting_subsystem:
+                                prmt_name = dedoted[0].lower()
+                                if len(dedoted) == 2:
+                                    body.update({prmt_name: {}})
+                                else:
+                                    body.update({prmt_name: {"comment": dedoted[2:]}})
+                                check_text = dedoted[1].replace(" ", "").replace("+", "").replace("-", "").replace("/", "")
+                                if check_text.isalpha():
+                                    body[prmt_name].update({"value": dedoted[1]})
+                                else:
+                                    if "_" in dedoted[1]:
+                                        q = unit(dedoted[1].lower().split("_")[0])
+                                        prmt_value = dedoted[1].lower().replace("=", "").split("_")[1]
+                                    else:
+                                        q = tt_unit(dedoted[0].lower(), body["class"][-1])
+                                        prmt_value = dedoted[1].lower().replace("=", "")
+                                    if "?" in prmt_value:
+                                        body[prmt_name].update({"comment": "?"})
+                                        prmt_value = prmt_value.replace("?", "")
+                                    if prmt_value[0] == ">":
+                                        body[prmt_name].update({"comment": "min value"})
+                                        prmt_value = prmt_value.replace(">", "")
+                                    elif prmt_value[0] == "<":
+                                        body[prmt_name].update({"comment": "max value"})
+                                        prmt_value = prmt_value.replace("<", "")
+                                    if "±" in prmt_value:
+                                        text = prmt_value.split("±")
+                                        if text[0][-1].isalpha:
+                                            text[0] = text[0][:-1]
+                                        if text[1] != "":
+                                            body[prmt_name].update({"value": float(text[0]) * q, "error": float(text[1]) * q})
+                                        else:
+                                            body[prmt_name].update({"value": float(text[0]) * q})
+                                    elif "+" in prmt_value and prmt_value[0] != "+":
+                                        text = prmt_value.split("+")
+                                        error = text[1].split("-")
+                                        if len(error) == 2:
+                                            try:
+                                                plus = float(error[0]) * q
+                                            except ValueError:
+                                                plus = 0 * q
+                                            try:
+                                                minus = float(error[1]) * q
+                                            except ValueError:
+                                                minus = 0 * q
+                                        elif len(error) == 4:
+                                            plus = float(error[0]+"-"+error[1]) * q
+                                            minus = float(error[2]+"-"+error[3]) * q
+                                        body[prmt_name].update({"value": float(text[0]) * q, "error": (plus, minus)})
+                                    elif "-" in prmt_value and prmt_value[0] != "-":
+                                        text = prmt_value.split("-")
+                                        min_v = float(text[0])
+                                        max_v = float(text[1])
+                                        value = (min_v + max_v) / 2
+                                        error = (max_v - min_v) / 2
+                                        body[prmt_name].update({"value": value * q, "error": error * q})
+                                    elif prmt_value[-1] == "%":
+                                        prmt_value = float(prmt_value.replace("%", ""))
+                                        body[prmt_name].update({"value": prmt_value / 100})
+                                    else:
+                                        body[prmt_name].update({"value": float(prmt_value) * q})
                         lastnotspace = True
 
 calculating = []
@@ -609,7 +812,7 @@ def process(name, body):
             print("- result of process (if was calculated): " + str(result))
             return result
         elif "included" in prmtr[name]:
-            #result.update({"comment": ["*teoretical*"]})
+            #result.update({"comment": ["*theoretical*"]})
             #body.update({name: result})
             return process(prmtr[name]["included"], body)
         #elif "standart" in prmtr[name]:
@@ -618,23 +821,43 @@ def process(name, body):
         print("- result of process (if was found): " + str(body[cross]))
         return body[cross]
 
-def find_class(body):
-    if "includes" in body:
-        return "barycenter"
-    else:
-        return "work in progress"
-
 def find_parameter(request, body):
     if request in ["part of", "parent", "parents"]:
         return {"database name": "parents", "value": ", ".join(body["part of"])}
     elif request in ["system", "include", "includes"]:
         return {"database name": "system", "value": ", ".join(body["includes"])}
     elif request == "class":
-        return find_class(body)
+        return find_class("askaniy", body)
     else:
         for name in prmtr:
             if request in prmtr[name]["alt_names"]:
                 return process(name, body)
+
+def find_class(standard, body):
+    if "class" in body:
+        if standard == "askaniy":
+            return ", ".join(body["class"])
+        elif standard == "ttarrants":
+            if "barycenter" in body["class"]:
+                return "System"
+            elif "star" in body["class"]:
+                return "Star"
+            elif "planemo" in body["class"]:
+                return "Planet"
+            elif "disk" in body["class"]:
+                return "Disk"
+            else:
+                return "UFO"
+        elif standard == "ssc":
+            radius = find_parameter("mean radius", body)["value"]
+            if radius < u.Quantity("450 km"):
+                return "asteroid"
+            elif radius < u.Quantity("2400 km"):
+                return "dwarfplanet"
+            else:
+                return "planet"
+    else:
+        return "Work in progress"
 
 
 # Second layer of the script:
@@ -666,8 +889,8 @@ def hlp(request):
         else:
             r = ""
             for key, value in adjectives.items():
-                r += "\n{} - {}".format(value, key)
-            return "Supported adjectives:" + r
+                r += f'\n{value} - {key}'
+            return f'Supported adjectives:{r}'
     elif request[0] == "abbreviations":
         if bot:
             em = discord.Embed(title = "Supported abbreviations and replacements:", color = discord.Colour.from_rgb(127, 127, 255))
@@ -676,19 +899,19 @@ def hlp(request):
         else:
             r = ""
             for key, value in abbrevs.items():
-                r += "\n{} - {}".format(key, value)
-            return "Supported abbreviations and replacements:" + r
+                r += f'\n{key} - {value}'
+            return f'Supported abbreviations and replacements:{r}'
     elif request[0] == "formats":
         if bot:
             em = discord.Embed(title = "Supported formats:", description = "\n".join(formats), color = discord.Colour.from_rgb(127, 127, 255))
         else:
             return "Supported formats:\n* " + "\n* ".join(formats)
     else:
-        return "I can't help with " + " ".join(request)
+        return f'I can’t help with {" ".join(request)}'
 
 def create(body):
     file_name = time.strftime("%Y-%m-%d_%H-%M-%S")
-    with codecs.open("{}/{}.askaniy".format(discord_path, file_name), "w") as f:
+    with open("{}/{}.askaniy".format(discord_path, file_name), "w") as f:
         f.write(body)
     body_name = body.split("\n")[0]
     print(body_name.split(", ")[0])
@@ -696,46 +919,48 @@ def create(body):
         print(find_body(body_name.split(", ")[0], database_path))
         return "I saved your object successfully, you can work with it"
     except Exception:
-        return "Some error in your syntax, I can't read it"
+        return "Some error in your syntax, I can’t read it"
 
 def output(parameter):
     try:
         anwser = str(parameter["value"].value)
-        #anwser += str(round(parameter["value"].value, 5))
         if "error" in parameter:
-            anwser += " ± " + str(parameter["error"])
+            if type(parameter["error"]) == tuple:
+                anwser += f' +{parameter["error"][0].value} -{parameter["error"][1].value}'
+            else:
+                anwser += f' ± {parameter["error"].value}'
         anwser += " " + str(parameter["value"].unit)
     except AttributeError:
         anwser = parameter["value"]
     if "source" in parameter:
         if type(parameter["source"]) == list:
             if len(parameter["source"]) == 1:
-                anwser += "; source: " + str(parameter["source"][0])
+                anwser += f'; source: {parameter["source"][0]}'
             else:
-                anwser += "; sources: " + ", ".join(parameter["source"])
+                anwser += f'; sources: {", ".join(parameter["source"])}'
         else:
-            anwser += "; source: " + str(parameter["source"])
+            anwser += f'; source: {parameter["source"]}'
     if "comment" in parameter:
         if type(parameter["comment"]) == list:
-            anwser += " ({})".format(", ".join(parameter["comment"]))
+            anwser += f' ({", ".join(parameter["comment"])})'
         else:
-            anwser += " ({})".format(parameter["comment"])
+            anwser += f' ({parameter["comment"]})'
     return anwser
 
 def short_list(system):
     res = []
-    for i in system:
-        res.append(i.split(", ")[0])
+    for component in system:
+        res.append(component.split(", ")[0])
     if len(res) >= 20:
         res = res[:19]
-        res.append("...")
+        res.append("…")
     return res
 
 def embed(body):
     global em
     em = discord.Embed(
-        title = ", ".join(body["name"]),
-        description = "class: " + find_class(body),
+        title = ", ".join(body["names"]),
+        description = "class: " + find_class("askaniy", body),
         color = discord.Colour.from_rgb(127, 255, 127)
         )
     if body["part of"] != []:
@@ -750,7 +975,7 @@ def embed(body):
 def find(request, body):
     parameter = find_parameter(request["parameter"], body)
     if parameter == None:
-        return "I can't understand this parameter"
+        return "I can’t understand this parameter"
     else:
         if "unit" in request:
             if request["unit"] == "si":
@@ -762,8 +987,7 @@ def find(request, body):
             if "error" in parameter:
                 parameter.pop("error")
         if request["meta"] == "info":
-            anwser = "{} of {} is ".format(parameter["database name"].capitalize(), body["name"][0].capitalize())
-            return anwser + output(parameter)
+            return f'{parameter["database name"].capitalize()} of {body["names"][0].capitalize()} is {output(parameter)}'
         elif request["meta"] == "value":
             return parameter["value"]
         elif request["meta"] == "error" and "error" in parameter:
@@ -778,33 +1002,58 @@ def find(request, body):
             return request["meta"].title() + " is not in the requested parameter"
 
 def generate(request, body):
-    if request == "ssc":
-        code = '"{}" "{}"\n'.format(":".join(body["name"]), "/".join(body["part of"])) + "{"
-        code += "\n\t"
+    if request == "askaniy":
+        level = ""
+        systems = ""
+        for system in body["part of"]:
+            systems += f'{level}{system}\n\n'
+            level += "\t"
+        code = f'{systems}{level}{", ".join(body["names"])}\n'
+        for parameter in body:
+            if parameter not in ["names", "part of", "includes"]:
+                code += f'{level}{parameter} = {body[parameter]["value"]}\n'
         return code
+    elif request == "ttarrants":
+        code = f'{find_class("ttarrants", body)}:{",".join(body["names"])}\n'
+        for parameter in body:
+            if parameter not in ["names", "part of", "includes"]:
+                code += f'{parameter}:{body[parameter]["value"]}\n'
+        return code
+    elif request == "ssc":
+        try:
+            code = '"{}" "{}"\n'.format(":".join(body["names"]), "/".join(body["part of"]))
+            code += "{\n"
+            code += f'\tClass\t"{find_class("ssc", body)}"\n'
+            code += f'\tTexture\t"{body["names"][0].lower()}.*"\n'
+            code += f'\tRadius\t{find_parameter("mean radius", body)["value"].to(u.km).value}\n'
+            code += "}\n"
+            return code
+        except Exception:
+            return f'{body["names"][0]} doesn’t have all the basic parameters for creating a SSC file.'
     elif request == "json":
         for i in body:
-            try: 
-                body[i].update({"value": str(body[i]["value"])})
-            except Exception:
-                pass
+            for j in body[i]:
+                try: 
+                    body[i].update({j: str(body[i][j])})
+                except Exception:
+                    pass
         return json.dumps(body)
     else:
-        decor = "\n{}\n{}\n".format(", ".join(body["name"]), "class: " + find_class(body))
+        decor = f'\n{", ".join(body["names"])}\nclass: {find_class("askaniy", body)}\n'
         if body["part of"] != []:
-            decor += "\npart of:\n{}\n".format(", ".join(body["part of"]))
+            decor += f'\npart of:\n{", ".join(body["part of"])}\n'
         if "includes" in body:
-            decor += "\nincludes:\n{}\n".format(", ".join(short_list(body["includes"])))
+            decor += f'\nincludes:\n{", ".join(short_list(body["includes"]))}\n'
         for key, value in body.items():
             if type(value) != list:
-                decor += ("\n{}\n{}\n".format(key, output(value)))
+                decor += (f"\n{key}\n{output(value)}\n")
         return decor
 
 
 # First layer of the script:
 
 def anwser(request):
-    print(request)
+    print(f'- result of read_request: {request}')
     global em
     em = None
     if request:
@@ -814,9 +1063,12 @@ def anwser(request):
             return create(request["body"])
         body = find_body(request["body"], database_path)
         if body == None:
-            return "I can't find {} in the available databases".format(request["body"])
+            return f'I can’t find {request["body"]} in the available databases'
         elif request["to_do"] == "return":
-            return "`" + str(body) + "`"
+            if bot:
+                return f'`{body}`'
+            else:
+                return str(body)
         elif request["to_do"] == "search":
             if bot:
                 return embed(body)
@@ -827,7 +1079,7 @@ def anwser(request):
         elif request["to_do"] == "generate":
             return generate(request["format"], body)
     else:
-        return "I can't do it for now"
+        return "I can’t do it for now"
 
 
 # Surface of the script:
@@ -835,7 +1087,7 @@ def anwser(request):
 if bot:
     class BotClient(discord.Client):
         async def on_ready(self):
-            print("Logged in as " + str(self.user))
+            print(f'Logged in as {self.user}')
         async def on_message(self, message):
             request = [x.lower() for x in message.content.split(" ")]
             if request[0] in supported_requests and message.author.discriminator != "1451":
