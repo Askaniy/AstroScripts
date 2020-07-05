@@ -510,7 +510,7 @@ def prmt_reader(line):
             else:
                 return {"name": name, "value": float(value) * q}
         except IndexError:
-            return {"name": name, "value": float(value)}
+            return {"name": parameter[0].strip(), "value": float(parameter[1].strip())}
     else:
         name = line.strip()
         value = "use `:` for text and `=` for quantity"
@@ -925,13 +925,19 @@ def output(parameter):
     try:
         anwser = str(parameter["value"].value)
         if "error" in parameter:
-            if type(parameter["error"]) == tuple:
-                anwser += f' +{parameter["error"][0].value} -{parameter["error"][1].value}'
-            else:
-                anwser += f' ± {parameter["error"].value}'
+            try:
+                if type(parameter["error"]) == tuple:
+                    anwser += f' +{parameter["error"][0].value} -{parameter["error"][1].value}'
+                else:
+                    anwser += f' ± {parameter["error"].value}'
+            except AttributeError:
+                if type(parameter["error"]) == tuple:
+                    anwser += f' +{parameter["error"][0]} -{parameter["error"][1]}'
+                else:
+                    anwser += f' ± {parameter["error"]}'
         anwser += " " + str(parameter["value"].unit)
     except AttributeError:
-        anwser = parameter["value"]
+        anwser = str(parameter["value"])
     if "source" in parameter:
         if type(parameter["source"]) == list:
             if len(parameter["source"]) == 1:
