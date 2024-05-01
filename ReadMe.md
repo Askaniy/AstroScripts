@@ -1,9 +1,15 @@
 # AstroScripts
-Scripts that solve some of the astronomical problems and automate my work.
 
-<br>**Python libraries needed for scripts:**
-| **AstroLib** | **Reprojection** | **Average brightness,<br>Border smoothing,<br>Coordinate grid map,<br>Virtual texture combiner** |
-|--------------|------------------|--------------------------------------------------------------------------------------------------|
-| - [Astropy](https://docs.astropy.org/)<br>- [SciPy](https://www.scipy.org/)<br>- [discord.py](https://discordpy.readthedocs.io/)<br>(only for the bot mode) | - [SciPy](https://www.scipy.org/)<br>- [Pillow](https://pillow.readthedocs.io/)<br>- [PySimpleGUI](https://pysimplegui.readthedocs.io/)<br>(only for the GUI version) | - [Pillow](https://pillow.readthedocs.io/) |
+Some Python scripts to solve some astronomical problems, written by a novice programmer and not honored with a separate repository.
 
-AstroLib note: `exoplanet.ttarants` was created by Thomas Tarrants as of June 2020.
+
+## Dependencies
+
+**AstroLib**: [astropy](https://docs.astropy.org/), [SciPy](https://www.scipy.org/), [discord.py](https://discordpy.readthedocs.io/) (only for the bot mode)
+
+**Others**: [Pillow](https://pillow.readthedocs.io/)
+
+
+## Notes
+
+AstroLib: `exoplanet.ttarants` was created by Thomas Tarrants in June 2020.
