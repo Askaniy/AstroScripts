@@ -2,6 +2,8 @@
 
 Some Python scripts to solve some astronomical problems, written by a novice programmer and not honored with a separate repository.
 
+Current status: not supported. For better samples of my code I recommend to look at the pinned repositories.
+
 
 ## Dependencies
 
